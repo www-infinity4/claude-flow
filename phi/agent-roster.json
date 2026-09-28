@@ -1,0 +1,147 @@
+{
+  "schema": "phi-agent-roster/v1",
+  "purpose": "Machine-only role routing for continuous Phi product improvement",
+  "routing": {
+    "rule": "Coordinator decomposes jobs and assigns only the minimum specialists needed. Verifier must be different from Writer.",
+    "completion": "No job completes without independent verification evidence.",
+    "spawning": "A role may request child jobs when it discovers a separate defect; child jobs retain parent job and Quant provenance."
+  },
+  "roles": [
+    {
+      "id": "intent-reader",
+      "kind": "reader",
+      "does": [
+        "read README/session-derived requirements",
+        "extract acceptance criteria",
+        "identify unfinished requirements"
+      ]
+    },
+    {
+      "id": "repo-reader",
+      "kind": "reader",
+      "does": [
+        "map repository/runtime/dependencies",
+        "locate canonical implementation",
+        "detect duplicate implementations"
+      ]
+    },
+    {
+      "id": "runtime-sensor",
+      "kind": "sensor",
+      "does": [
+        "check HTTP/API health",
+        "check Cloudflare bindings",
+        "record runtime evidence"
+      ]
+    },
+    {
+      "id": "ui-sensor",
+      "kind": "sensor",
+      "does": [
+        "exercise phone-first UI",
+        "detect overflow/missing controls/render failures",
+        "capture verification evidence"
+      ]
+    },
+    {
+      "id": "media-sensor",
+      "kind": "sensor",
+      "does": [
+        "test audio/video sources",
+        "detect wrong/dead/repeating media",
+        "verify in-page playback"
+      ]
+    },
+    {
+      "id": "data-sensor",
+      "kind": "sensor",
+      "does": [
+        "validate D1 persistence",
+        "check provenance/lineage",
+        "detect browser-only state regressions"
+      ]
+    },
+    {
+      "id": "wallet-sensor",
+      "kind": "sensor",
+      "does": [
+        "verify unified balances/transfers",
+        "test sign-in ownership boundaries",
+        "detect divergent wallet implementations"
+      ]
+    },
+    {
+      "id": "schedule-sensor",
+      "kind": "sensor",
+      "does": [
+        "validate TV/radio schedules",
+        "detect overlaps/repeats/gaps",
+        "verify now/next offsets"
+      ]
+    },
+    {
+      "id": "router",
+      "kind": "router",
+      "does": [
+        "classify defects",
+        "select specialists",
+        "split independent child jobs",
+        "promote highest-impact blocked requirement"
+      ]
+    },
+    {
+      "id": "layout-scout",
+      "kind": "router",
+      "does": [
+        "scan layout patterns",
+        "rank reusable patterns against product contract",
+        "produce component/layout candidates without changing product"
+      ]
+    },
+    {
+      "id": "frontend-writer",
+      "kind": "writer",
+      "does": [
+        "repair HTML/CSS/JS",
+        "build responsive controls/cards",
+        "preserve product contract"
+      ]
+    },
+    {
+      "id": "backend-writer",
+      "kind": "writer",
+      "does": [
+        "repair Worker/API/D1 integration",
+        "add durable endpoints",
+        "keep secrets server-side"
+      ]
+    },
+    {
+      "id": "catalog-writer",
+      "kind": "writer",
+      "does": [
+        "expand/normalize catalogs",
+        "preserve source metadata",
+        "deduplicate assets and programming"
+      ]
+    },
+    {
+      "id": "integration-writer",
+      "kind": "writer",
+      "does": [
+        "connect shared Phi services",
+        "remove duplicate local implementations",
+        "wire Monitor/Quant provenance"
+      ]
+    },
+    {
+      "id": "independent-verifier",
+      "kind": "verifier",
+      "does": [
+        "rerun acceptance checks after change",
+        "compare before/after evidence",
+        "approve completion or return needs_work"
+      ]
+    }
+  ]
+}
