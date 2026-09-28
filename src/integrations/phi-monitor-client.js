@@ -49,6 +49,44 @@ export class PhiMonitorClient {
   newsFeed(payload, options = {}) {
     return this.request("/p/news/feed", { ...options, method: "POST", body: payload });
   }
+
+  createFlowJob(payload, options = {}) {
+    return this.request("/p/flow/jobs", { ...options, method: "POST", body: payload });
+  }
+
+  listFlowJobs({ status = "", limit = 50 } = {}, options = {}) {
+    const params = new URLSearchParams({ limit: String(limit) });
+    if (status) params.set("status", status);
+    return this.request("/p/flow/jobs?" + params, options);
+  }
+
+  getFlowJob(jobId, options = {}) {
+    return this.request("/p/flow/jobs/" + encodeURIComponent(jobId), options);
+  }
+
+  claimFlowJob(jobId, agent, options = {}) {
+    return this.request("/p/flow/jobs/" + encodeURIComponent(jobId) + "/claim", {
+      ...options, method: "POST", body: { agent }
+    });
+  }
+
+  addFlowEvent(jobId, kind, data = {}, options = {}) {
+    return this.request("/p/flow/jobs/" + encodeURIComponent(jobId) + "/event", {
+      ...options, method: "POST", body: { kind, data }
+    });
+  }
+
+  verifyFlowJob(jobId, passed, evidence = {}, options = {}) {
+    return this.request("/p/flow/jobs/" + encodeURIComponent(jobId) + "/verify", {
+      ...options, method: "POST", body: { passed, evidence }
+    });
+  }
+
+  completeFlowJob(jobId, result = {}, options = {}) {
+    return this.request("/p/flow/jobs/" + encodeURIComponent(jobId) + "/complete", {
+      ...options, method: "POST", body: { result }
+    });
+  }
 }
 
 export const createPhiMonitorClient = options => new PhiMonitorClient(options);
