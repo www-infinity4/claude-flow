@@ -1,0 +1,86 @@
+{
+  "schema": "phi-repair-jobs/v1",
+  "repository_full_name": "www-infinity4/C13b0",
+  "jobs": [
+    {
+      "job_key": "c13b0:mercury-collect-cart-runtime",
+      "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
+      "requirement_text": "Runtime-verify the Mercury dime test advertisement Collect flow: Collect becomes Collected, the Mercury card appears in the visible Shop cart, the cart opens, and the existing 0.1 StarCoin collect-credit path fires exactly once.",
+      "runtime_target": "Infinity Phi GitHub Pages",
+      "classification": "active-site",
+      "priority": "production-broken",
+      "specialist_roles": [
+        "repo-reader",
+        "ui-sensor",
+        "wallet-sensor",
+        "frontend-writer",
+        "independent-verifier"
+      ],
+      "acceptance_checks": [
+        "Mercury dime test sale renders on the deployed Infinity Phi page.",
+        "Tapping Collect changes the control to Collected.",
+        "The Shop cart opens from the collect action.",
+        "The visible cart contains the Mercury dime card with price label 100 Quants.",
+        "One collect action emits/records exactly one 0.1 StarCoin credit through the existing collect-credit path.",
+        "Reload behavior does not falsely show Collected unless the item remains available from the current cart persistence layer.",
+        "No Quant payment is reported or implied by this test collect flow."
+      ],
+      "regression_group": "commerce",
+      "risk": "low-reversible",
+      "authorization_required": false,
+      "evidence_required": [
+        "source files inspected",
+        "before runtime evidence",
+        "commit SHA if a repair is required",
+        "deployment status for repair commit if changed",
+        "after runtime evidence on deployed page",
+        "independent verifier result"
+      ],
+      "constraints": [
+        "Do not create or simulate a real Quant transfer.",
+        "Do not store shipping information in Quant metadata, URLs, public ledgers, or transferable event payloads.",
+        "Preserve the explicit test-listing and no-Quant-transfer language."
+      ]
+    },
+    {
+      "job_key": "c13b0:mercury-real-quant-order-backend",
+      "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
+      "requirement_text": "Build the server-backed 100-Quant marketplace settlement and private order/fulfillment flow only after the wallet transfer and order authority are identified and separately verified.",
+      "runtime_target": "Infinity Phi marketplace backend",
+      "classification": "active-service",
+      "priority": "data-loss",
+      "specialist_roles": [
+        "repo-reader",
+        "data-sensor",
+        "wallet-sensor",
+        "backend-writer",
+        "integration-writer",
+        "independent-verifier"
+      ],
+      "acceptance_checks": [
+        "Authoritative server wallet verifies a 100-Quant transfer before an order is marked paid.",
+        "Payment transaction ID is idempotently bound to one order.",
+        "Private shipping data is stored only in the authorized private order store.",
+        "Seller receives a durable sale/ship-item event without exposing buyer private data publicly.",
+        "Buyer can read fulfillment status and tracking when supplied.",
+        "Transferable Quant metadata contains no shipping address, payment credentials, or private customer fields."
+      ],
+      "regression_group": "commerce",
+      "risk": "consequential",
+      "authorization_required": true,
+      "evidence_required": [
+        "wallet authority identified",
+        "D1/order schema evidence",
+        "idempotency test",
+        "privacy-boundary test",
+        "settlement verification test",
+        "independent verifier result"
+      ],
+      "constraints": [
+        "Do not mark paid from a browser-only event.",
+        "Do not expose private customer data to transferable Quant metadata.",
+        "Do not perform a real-value transfer during unattended verification."
+      ]
+    }
+  ]
+}
