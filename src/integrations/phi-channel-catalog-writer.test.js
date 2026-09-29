@@ -1,0 +1,10 @@
+import{strict as assert}from"node:assert";import{validateCatalogAdmission,prepareCatalogRefill,bumpCatalogVersion}from"./phi-channel-catalog-writer.js";
+const admitted={passed:true,admissionStatus:"admitted-for-catalog-write",evidence:{media:{playing:true}},candidate:{title:"New Feature",year:2024,runtimeSeconds:5400,videoId:"abcdefghijk",source:"Verified"}};
+assert.equal(validateCatalogAdmission(admitted,"Cinemax").passed,true);
+assert.equal(validateCatalogAdmission({...admitted,passed:false},"Cinemax").passed,false);
+const src='window.HERMIT_CATALOG = [\n  { id:"MAX-SAFE-001", title:"Old", runtimeSeconds:5400, videoId:"oldvideo123", cleared:true }\n].map(movie => ({ ...movie, posterUrl:"" }));';
+const out=prepareCatalogRefill({channel:"Cinemax",catalogSource:src,admissions:[admitted]});
+assert.equal(out.changed,true);assert.equal(out.added,1);assert.match(out.content,/MAX-SAFE-002/);assert.match(out.content,/abcdefghijk/);
+const duplicate=prepareCatalogRefill({channel:"Cinemax",catalogSource:out.content,admissions:[admitted]});assert.equal(duplicate.changed,false);
+assert.match(bumpCatalogVersion('<script src="data/catalog.js?v=old"></script>',"20260929-refill1"),/20260929-refill1/);
+assert.throws(()=>prepareCatalogRefill({channel:"HBO",catalogSource:src,admissions:[admitted]}),/Unsupported/);
