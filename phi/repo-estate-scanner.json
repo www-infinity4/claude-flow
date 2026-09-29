@@ -1,0 +1,131 @@
+{
+  "schema": "phi-repo-estate-scanner/v1",
+  "purpose": "Inventory Phi repositories, classify them without mutation, discover requirement ledgers, and emit scoped repair-job candidates.",
+  "inventory": {
+    "owner": "www-infinity4",
+    "exhaustive_required": true,
+    "pagination_rule": "Continue until the repository source explicitly reports no additional page/cursor. If the connector repeats a page or cannot expose later pages, record inventory_incomplete and do not claim full-estate coverage.",
+    "dedupe_key": "repository_full_name",
+    "include_archived": true,
+    "first_observed_batch_note": "Connected GitHub listing exposed 100 unique repositories in the initial batch on 2026-09-28; total estate is expected to be larger and must not be inferred from this batch."
+  },
+  "classification": {
+    "classes": [
+      "active-site",
+      "active-service",
+      "shared-library",
+      "automation",
+      "research-experiment",
+      "game-media",
+      "archive-candidate",
+      "unknown"
+    ],
+    "signals": [
+      "README purpose",
+      "package/workflow files",
+      "Cloudflare Worker config",
+      "GitHub Pages workflow",
+      "source entrypoints",
+      "recent implementation ledger",
+      "known runtime URL",
+      "cross-repo imports/references"
+    ],
+    "rule": "Classification is descriptive only. Never archive, delete, rename, merge, or repurpose a repository during scanning."
+  },
+  "requirement_discovery": {
+    "priority_files": [
+      "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
+      "README.md",
+      "README*.md",
+      "docs/**/*.md"
+    ],
+    "unresolved_markers": [
+      "- [ ]",
+      "RED",
+      "unresolved",
+      "not built",
+      "verification needed",
+      "TODO"
+    ],
+    "owner_mapping": [
+      "explicit repo/path in requirement",
+      "component/service name match",
+      "cross-repo integration reference",
+      "runtime/deployment ownership"
+    ],
+    "ambiguity_rule": "If more than one canonical owner remains plausible, create a repo-reader investigation job instead of choosing one."
+  },
+  "job_candidate": {
+    "required_fields": [
+      "job_key",
+      "requirement_source",
+      "requirement_text",
+      "repository_full_name",
+      "runtime_target",
+      "classification",
+      "specialist_roles",
+      "acceptance_checks",
+      "regression_group",
+      "risk",
+      "authorization_required",
+      "evidence_required"
+    ],
+    "risk_levels": [
+      "read-only",
+      "low-reversible",
+      "shared-runtime",
+      "consequential"
+    ],
+    "authorization_rule": "Any action listed in phi/overnight-orchestrator.json requires_user_authorization remains blocked until explicit authorization.",
+    "granularity": "One independently verifiable defect or requirement per job. Split unrelated repairs."
+  },
+  "priority": [
+    "production/runtime broken now",
+    "data loss or persistence failure",
+    "shared service regression affecting multiple Phi surfaces",
+    "explicit master-red requirement with known owner",
+    "unfinished active product",
+    "style modernization",
+    "research/experimental cleanup"
+  ],
+  "seed_owner_hints": {
+    "www-infinity4/C13b0": [
+      "Infinity Phi",
+      "Mercury test marketplace",
+      "Infinity Phi cart"
+    ],
+    "www-infinity4/Alien-Radio": [
+      "Infinity Radio",
+      "Shop Phi implementation currently hosted with radio"
+    ],
+    "www-infinity4/Alien-Coin": [
+      "Alien Coin"
+    ],
+    "www-infinity4/TV-Database": [
+      "TV catalog/schedule data"
+    ],
+    "www-infinity4/claude-flow": [
+      "Claude-Flow orchestration",
+      "master backlog",
+      "agent roster"
+    ]
+  },
+  "output": {
+    "inventory": "phi/state/repo-inventory.json",
+    "classifications": "phi/state/repo-classifications.json",
+    "jobs": "phi/state/repair-job-candidates.json",
+    "morning_summary": "phi/state/estate-scan-summary.json",
+    "note": "Generated state paths are contracts for the runtime/Monitor implementation; scanner must not fabricate files when it has not actually scanned the source."
+  },
+  "completion": {
+    "scan_complete_requires": [
+      "all repository pages/installations enumerated",
+      "repositories deduplicated",
+      "each repository classified or unknown with reason",
+      "requirement ledgers inspected where present",
+      "job candidates emitted for unresolved mapped requirements",
+      "coverage statistics recorded"
+    ],
+    "never_equate_scan_with_repair": true
+  }
+}
