@@ -34,12 +34,25 @@ export async function runOvernightQueue({
   agent = "claude-flow-overnight",
   batchSize = 10,
   maxAttempts = 2,
-  priorAttempts = {}
+  priorAttempts = {},
+  startupGate = null,
+  runtimeHealth = null
 }) {
   if (!monitor?.listFlowJobs) throw new TypeError("Monitor Flow client is required");
   const response = await monitor.listFlowJobs({ status: "pending", limit: Math.max(batchSize * 3, 25) });
   const jobs = response?.jobs ?? response?.items ?? response?.data ?? (Array.isArray(response) ? response : []);
-  const selected = sortPendingJobs(jobs).slice(0, batchSize);
+  const ordered = sortPendingJobs(jobs);
+  const selected = [];
+  const deferred = [];
+  for (const job of ordered) {
+    if (selected.length >= batchSize) break;
+    const gate = typeof startupGate === "function" ? startupGate(job, runtimeHealth) : { runnable: true };
+    if (gate?.runnable === false) {
+      deferred.push({ job, gate });
+      continue;
+    }
+    selected.push(job);
+  }
   const summary = {
     discovered: jobs.length,
     selected: selected.length,
@@ -47,8 +60,19 @@ export async function runOvernightQueue({
     needs_work: [],
     blocked: [],
     failed: [],
-    quarantined: []
+    quarantined: [],
+    deferred: []
   };
+
+  for (const { job, gate } of deferred) {
+    const jobId = idOf(job);
+    await monitor.addFlowEvent(jobId, "dependency_deferred", {
+      reason: gate.reason || "runtime_dependency_unavailable",
+      evidence: gate.evidence || null
+    });
+    summary.needs_work.push(jobId);
+    summary.deferred.push(jobId);
+  }
 
   for (const job of selected) {
     const jobId = idOf(job);
@@ -96,13 +120,15 @@ export function buildMorningReport(summary, { inventory = null, generatedAt = ne
       needsWork: summary.needs_work.length,
       blocked: summary.blocked.length,
       failed: summary.failed.length,
-      quarantined: summary.quarantined.length
+      quarantined: summary.quarantined.length,
+      deferred: (summary.deferred || []).length
     },
     verifiedJobs: summary.verified,
     needsWorkJobs: summary.needs_work,
     blockedApprovals: summary.blocked,
     failedJobs: summary.failed,
     quarantinedJobs: summary.quarantined,
+    deferredJobs: summary.deferred || [],
     note: "Counts describe this bounded run only; they do not imply full-estate completion."
   };
 }
