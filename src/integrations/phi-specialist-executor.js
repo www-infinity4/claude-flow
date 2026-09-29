@@ -64,3 +64,31 @@ export function createSpecialistExecutor({ roster, policy, implementations, hand
     });
   };
 }
+
+
+export function createChannelRefillHandler({runRefill,discovery,enrichmentAdapters={},browser,verifyRegression}){
+  if(typeof runRefill!=="function")throw new TypeError("runRefill is required");
+  return async function channelCatalogWriter({job,role,capabilities}){
+    const channel=job?.payload?.channel||job?.channel;
+    if(!["Cinemax","Showtime"].includes(channel))throw new Error("channel refill target rejected");
+    const read=capabilities["repo.files.read"],write=capabilities["repo.write.scoped"];
+    if(typeof read!=="function"||typeof write!=="function")throw new Error("catalog writer capabilities unavailable");
+    const repository=job?.target?.repository||job?.payload?.target?.repository;
+    const expected=channel==="Cinemax"?"www-infinity4/Cinemax":"www-infinity4/Showtime";
+    if(repository!==expected)throw new Error("channel/repository scope mismatch");
+    const catalog=await read({repository_full_name:repository,path:"data/catalog.js"});
+    const index=await read({repository_full_name:repository,path:"index.html"});
+    const peer=job?.payload?.peerCatalog||[];
+    return runRefill({
+      channel,query:job?.payload?.query||"full movie",discovery,enrichmentAdapters,browser,
+      runtimeUrl:job?.payload?.runtimeUrl,catalogSource:catalog.content,indexSource:index.content,
+      peerCatalog:peer,cacheStamp:job?.payload?.cacheStamp,
+      writeFiles:async({repo,files,message})=>{
+        const results=[];
+        for(const file of files)results.push(await write({repository_full_name:repo,path:file.path,content:file.content,message}));
+        return{results};
+      },
+      verifyRegression
+    });
+  };
+}
