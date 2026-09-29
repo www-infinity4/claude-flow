@@ -74,7 +74,9 @@
         "Served asset and title equal the active slot.",
         "Schedule version is current rather than stale.",
         "Playback advances normally.",
-        "HBO baseline remains clean."
+        "HBO baseline remains clean.",
+        "Catalog has at least 12 unique playable full-length assets.",
+        "Catalog overlap with HBO is no more than 50%."
       ],
       "regression_group": "channels",
       "risk": "shared-runtime",
@@ -87,9 +89,17 @@
         "served state",
         "after playback samples",
         "HBO regression comparison",
-        "independent verifier result"
+        "independent verifier result",
+        "inspectCatalogFreshness result"
       ],
-      "repository_full_name": "www-infinity4/TNT"
+      "repository_full_name": "www-infinity4/TNT",
+      "catalog_quality_gate": {
+        "min_unique_assets": 12,
+        "max_peer_overlap_ratio": 0.5,
+        "peer_baseline": "HBO",
+        "failure_result": "needs_work",
+        "refill_required_on_failure": true
+      }
     },
     {
       "job_key": "tv-database:showtime:fresh-schedule",
@@ -114,7 +124,9 @@
         "Served asset and title equal the active slot.",
         "Schedule version is current rather than stale.",
         "Playback advances normally.",
-        "HBO baseline remains clean."
+        "HBO baseline remains clean.",
+        "Catalog has at least 12 unique playable full-length assets.",
+        "Catalog overlap with HBO is no more than 50%."
       ],
       "regression_group": "channels",
       "risk": "shared-runtime",
@@ -127,9 +139,17 @@
         "served state",
         "after playback samples",
         "HBO regression comparison",
-        "independent verifier result"
+        "independent verifier result",
+        "inspectCatalogFreshness result"
       ],
-      "repository_full_name": "www-infinity4/TNT"
+      "repository_full_name": "www-infinity4/TNT",
+      "catalog_quality_gate": {
+        "min_unique_assets": 12,
+        "max_peer_overlap_ratio": 0.5,
+        "peer_baseline": "HBO",
+        "failure_result": "needs_work",
+        "refill_required_on_failure": true
+      }
     },
     {
       "job_key": "tv-database:hbo:preservation-baseline",
