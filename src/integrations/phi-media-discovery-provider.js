@@ -96,3 +96,42 @@ export async function discoverCatalogRefill({
     admissionStatus: "runtime-verification-required"
   };
 }
+
+
+export function createSearxngDiscoveryAdapter({
+  endpoint = (typeof process !== "undefined" && process.env && process.env.SEARXNG_URL) || "https://orange-brook-a2ac.marvaseater.workers.dev",
+  fetchImpl = globalThis.fetch
+} = {}) {
+  need(fetchImpl, "fetch implementation");
+  const base = String(endpoint || "").replace(/\/$/, "");
+  need(base, "SearXNG endpoint");
+
+  return {
+    async search({ query, channel, limit = 30 }) {
+      const url = new URL(base + "/search");
+      url.search = new URLSearchParams({
+        q: [query, channel, "full movie"].filter(Boolean).join(" "),
+        format: "json",
+        categories: "videos",
+        safesearch: "1"
+      }).toString();
+      const response = await fetchImpl(url, { headers:{ accept:"application/json" } });
+      if (!response.ok) throw new Error(`SearXNG search failed: ${response.status}`);
+      const payload = await response.json();
+      return (Array.isArray(payload && payload.results) ? payload.results : []).slice(0, limit).map(item => ({
+        title: item.title,
+        sourceId: item.videoId || item.video_id || item.id || "",
+        runtimeSeconds: item.runtimeSeconds || item.durationSeconds || item.duration || 0,
+        source: item.engine || item.source || "SearXNG",
+        sourceUrl: item.url || "",
+        metadata: item
+      }));
+    }
+  };
+}
+
+export function createDefaultPhiMediaDiscovery(options = {}) {
+  return createMediaDiscoveryProvider({
+    searxng: createSearxngDiscoveryAdapter(options)
+  });
+}
