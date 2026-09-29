@@ -1,0 +1,151 @@
+{
+  "schema": "phi-repair-jobs/v1",
+  "repository_full_name": "www-infinity4/TV-Database",
+  "shared_regression_baseline": "HBO",
+  "jobs": [
+    {
+      "job_key": "tv-database:cartoon-network:restart-loop",
+      "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
+      "requirement_text": "Repair Cartoon Network playback restarting/looping and stale or flapping title metadata without regressing shared channel playback.",
+      "runtime_target": "Cartoon Network",
+      "classification": "active-service",
+      "priority": "production-broken",
+      "specialist_roles": [
+        "repo-reader",
+        "runtime-sensor",
+        "ui-sensor",
+        "media-sensor",
+        "schedule-sensor",
+        "frontend-writer",
+        "integration-writer",
+        "independent-verifier"
+      ],
+      "acceptance_checks": [
+        "Playback advances continuously through the observation window without unexpected reset.",
+        "Displayed title remains aligned with the currently served asset.",
+        "Scheduled asset matches served asset.",
+        "Video and audio remain available.",
+        "HBO baseline does not gain a new playback, title, schedule, or media defect."
+      ],
+      "regression_group": "channels",
+      "risk": "shared-runtime",
+      "authorization_required": false,
+      "evidence_required": [
+        "before playback samples",
+        "active schedule slot",
+        "served asset/title",
+        "repair commit if changed",
+        "after playback samples",
+        "HBO regression comparison",
+        "independent verifier result"
+      ]
+    },
+    {
+      "job_key": "tv-database:cinemax:fresh-schedule",
+      "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
+      "requirement_text": "Ensure Cinemax serves the current generated Cloudflare schedule/catalog rather than stale prior programming.",
+      "runtime_target": "Cinemax",
+      "classification": "active-service",
+      "priority": "production-broken",
+      "specialist_roles": [
+        "repo-reader",
+        "runtime-sensor",
+        "data-sensor",
+        "schedule-sensor",
+        "catalog-writer",
+        "backend-writer",
+        "integration-writer",
+        "independent-verifier"
+      ],
+      "acceptance_checks": [
+        "Active schedule slot exists.",
+        "Scheduled catalog asset exists.",
+        "Served asset and title equal the active slot.",
+        "Schedule version is current rather than stale.",
+        "Playback advances normally.",
+        "HBO baseline remains clean."
+      ],
+      "regression_group": "channels",
+      "risk": "shared-runtime",
+      "authorization_required": false,
+      "evidence_required": [
+        "schedule version",
+        "active slot",
+        "catalog lookup",
+        "served state",
+        "after playback samples",
+        "HBO regression comparison",
+        "independent verifier result"
+      ]
+    },
+    {
+      "job_key": "tv-database:showtime:fresh-schedule",
+      "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
+      "requirement_text": "Ensure Showtime serves the current generated Cloudflare schedule/catalog rather than stale prior programming.",
+      "runtime_target": "Showtime",
+      "classification": "active-service",
+      "priority": "production-broken",
+      "specialist_roles": [
+        "repo-reader",
+        "runtime-sensor",
+        "data-sensor",
+        "schedule-sensor",
+        "catalog-writer",
+        "backend-writer",
+        "integration-writer",
+        "independent-verifier"
+      ],
+      "acceptance_checks": [
+        "Active schedule slot exists.",
+        "Scheduled catalog asset exists.",
+        "Served asset and title equal the active slot.",
+        "Schedule version is current rather than stale.",
+        "Playback advances normally.",
+        "HBO baseline remains clean."
+      ],
+      "regression_group": "channels",
+      "risk": "shared-runtime",
+      "authorization_required": false,
+      "evidence_required": [
+        "schedule version",
+        "active slot",
+        "catalog lookup",
+        "served state",
+        "after playback samples",
+        "HBO regression comparison",
+        "independent verifier result"
+      ]
+    },
+    {
+      "job_key": "tv-database:hbo:preservation-baseline",
+      "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
+      "requirement_text": "Use HBO as the current preservation baseline while shared channel repairs are made; diagnose it if evidence shows a regression but do not rewrite it merely because another channel is broken.",
+      "runtime_target": "HBO",
+      "classification": "active-service",
+      "priority": "shared-runtime",
+      "specialist_roles": [
+        "repo-reader",
+        "runtime-sensor",
+        "media-sensor",
+        "schedule-sensor",
+        "independent-verifier"
+      ],
+      "acceptance_checks": [
+        "Playback advances without reset or stall.",
+        "Served asset/title match active schedule.",
+        "Video and audio are available.",
+        "No repair is performed unless runtime evidence identifies an HBO defect."
+      ],
+      "regression_group": "channels",
+      "risk": "read-only",
+      "authorization_required": false,
+      "evidence_required": [
+        "baseline playback samples",
+        "active slot",
+        "served state",
+        "console/network observations",
+        "verifier result"
+      ]
+    }
+  ]
+}
