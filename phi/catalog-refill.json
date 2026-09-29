@@ -1,0 +1,82 @@
+{
+  "schema": "phi-catalog-refill/v1",
+  "purpose": "Expand undersized channel catalogs with independently verified full-length playable sources before schedule generation.",
+  "trigger": {
+    "defects": [
+      "catalog-too-shallow",
+      "catalog-peer-overlap"
+    ],
+    "source": "inspectCatalogFreshness"
+  },
+  "targets": [
+    {
+      "channel": "Cinemax",
+      "repository_full_name": "www-infinity4/Cinemax",
+      "catalog_path": "data/catalog.js",
+      "minimum_unique_assets": 12,
+      "peer_baseline": "HBO",
+      "maximum_peer_overlap_ratio": 0.5
+    },
+    {
+      "channel": "Showtime",
+      "repository_full_name": "www-infinity4/Showtime",
+      "catalog_path": "data/catalog.js",
+      "minimum_unique_assets": 12,
+      "peer_baseline": "HBO",
+      "maximum_peer_overlap_ratio": 0.5
+    }
+  ],
+  "discovery": {
+    "roles": [
+      "repo-reader",
+      "data-sensor",
+      "media-sensor",
+      "catalog-writer",
+      "independent-verifier"
+    ],
+    "candidate_fields": [
+      "title",
+      "year",
+      "runtimeSeconds",
+      "videoId",
+      "source",
+      "networkChannel",
+      "contentClass",
+      "cleared"
+    ],
+    "requirements": [
+      "Candidate is a full-length program appropriate to the channel catalog policy.",
+      "Candidate source ID is unique within the target catalog.",
+      "Candidate is not already present in the peer baseline when that would exceed the overlap threshold.",
+      "Runtime is finite and fits the channel engine slot constraints.",
+      "Media must be playable in the actual channel player; metadata alone is insufficient.",
+      "Trailers, promos, clips, removed sources, DRM-only listings, and age-gated/unembeddable sources are rejected.",
+      "Do not invent source IDs, titles, runtimes, or playability."
+    ]
+  },
+  "workflow": [
+    "Read target catalog and channel source policy.",
+    "Read peer baseline catalog.",
+    "Discover candidate full-length sources.",
+    "Normalize candidate metadata.",
+    "Reject duplicates and policy failures.",
+    "Runtime-test candidate media in the same player path used by the channel.",
+    "Add only verified candidates to the target catalog.",
+    "Re-run inspectCatalogFreshness.",
+    "Generate schedule and verify active/next slots use valid catalog assets.",
+    "Run channel playback verification and HBO regression baseline.",
+    "Record source URLs/IDs, verification evidence, commit SHA, and runtime result."
+  ],
+  "completion": {
+    "requires": [
+      "at least 12 unique playable target assets",
+      "peer overlap <= 0.5",
+      "catalog source commit",
+      "runtime media evidence for newly admitted assets",
+      "schedule evidence",
+      "independent verifier"
+    ],
+    "missing_runtime_evidence": "needs_work",
+    "discovery_only_is_not_completion": true
+  }
+}
