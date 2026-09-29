@@ -1,0 +1,214 @@
+{
+  "schema": "phi-role-capabilities/v1",
+  "default": "deny",
+  "rules": {
+    "intent-reader": {
+      "allow": [
+        "requirements.read",
+        "docs.read"
+      ],
+      "deny": [
+        "repo.write",
+        "deploy.write",
+        "external.publish"
+      ]
+    },
+    "repo-reader": {
+      "allow": [
+        "repo.metadata.read",
+        "repo.files.read",
+        "repo.search",
+        "deploy.status.read"
+      ],
+      "deny": [
+        "repo.write",
+        "deploy.write"
+      ]
+    },
+    "runtime-sensor": {
+      "allow": [
+        "runtime.http.read",
+        "cloudflare.health.read",
+        "deploy.status.read"
+      ],
+      "deny": [
+        "repo.write",
+        "deploy.write"
+      ]
+    },
+    "ui-sensor": {
+      "allow": [
+        "browser.navigate",
+        "browser.inspect",
+        "browser.screenshot",
+        "browser.console.read"
+      ],
+      "deny": [
+        "repo.write",
+        "browser.form.submit.consequential"
+      ]
+    },
+    "media-sensor": {
+      "allow": [
+        "browser.navigate",
+        "browser.media.test",
+        "runtime.http.read"
+      ],
+      "deny": [
+        "repo.write"
+      ]
+    },
+    "data-sensor": {
+      "allow": [
+        "cloudflare.health.read",
+        "data.schema.read",
+        "data.persistence.test"
+      ],
+      "deny": [
+        "data.destructive",
+        "repo.write"
+      ]
+    },
+    "wallet-sensor": {
+      "allow": [
+        "wallet.read",
+        "wallet.test.simulated",
+        "data.persistence.test"
+      ],
+      "deny": [
+        "wallet.transfer.real",
+        "repo.write"
+      ]
+    },
+    "schedule-sensor": {
+      "allow": [
+        "schedule.read",
+        "runtime.http.read",
+        "browser.media.test"
+      ],
+      "deny": [
+        "repo.write"
+      ]
+    },
+    "router": {
+      "allow": [
+        "jobs.read",
+        "jobs.create",
+        "jobs.route",
+        "evidence.read"
+      ],
+      "deny": [
+        "repo.write",
+        "external.publish"
+      ]
+    },
+    "layout-scout": {
+      "allow": [
+        "repo.files.read",
+        "repo.search",
+        "browser.inspect"
+      ],
+      "deny": [
+        "repo.write"
+      ]
+    },
+    "frontend-writer": {
+      "allow": [
+        "repo.files.read",
+        "repo.search",
+        "repo.write.scoped",
+        "tests.run",
+        "deploy.existing.reversible"
+      ],
+      "deny": [
+        "secrets.write",
+        "external.publish",
+        "wallet.transfer.real",
+        "data.destructive"
+      ]
+    },
+    "backend-writer": {
+      "allow": [
+        "repo.files.read",
+        "repo.search",
+        "repo.write.scoped",
+        "tests.run",
+        "deploy.existing.reversible",
+        "data.migration.additive"
+      ],
+      "deny": [
+        "secrets.read.value",
+        "secrets.write",
+        "data.destructive",
+        "wallet.transfer.real",
+        "external.publish"
+      ]
+    },
+    "catalog-writer": {
+      "allow": [
+        "repo.files.read",
+        "repo.search",
+        "repo.write.scoped",
+        "runtime.http.read",
+        "tests.run"
+      ],
+      "deny": [
+        "external.publish",
+        "data.destructive"
+      ]
+    },
+    "integration-writer": {
+      "allow": [
+        "repo.files.read",
+        "repo.search",
+        "repo.write.scoped",
+        "tests.run",
+        "deploy.existing.reversible"
+      ],
+      "deny": [
+        "secrets.write",
+        "external.publish",
+        "wallet.transfer.real",
+        "data.destructive"
+      ]
+    },
+    "independent-verifier": {
+      "allow": [
+        "repo.files.read",
+        "deploy.status.read",
+        "runtime.http.read",
+        "browser.navigate",
+        "browser.inspect",
+        "browser.screenshot",
+        "browser.console.read",
+        "browser.media.test",
+        "tests.run",
+        "evidence.write"
+      ],
+      "deny": [
+        "repo.write",
+        "deploy.write",
+        "data.write",
+        "wallet.transfer.real",
+        "external.publish"
+      ]
+    }
+  },
+  "consequential_capabilities": [
+    "external.publish",
+    "wallet.transfer.real",
+    "money.spend",
+    "customer_private_data.export",
+    "repo.delete",
+    "data.destructive",
+    "auth.policy.write",
+    "secrets.write"
+  ],
+  "enforcement": [
+    "Capability not explicitly allowed is denied.",
+    "Job authorization cannot grant a role a capability absent from this file.",
+    "Independent verifier must never receive repo.write or deploy.write.",
+    "Scoped repo writes must remain inside the job's repository_full_name and acceptance criterion.",
+    "Existing reversible deploy means an already-configured deployment path; it does not authorize creating paid infrastructure or changing credentials."
+  ]
+}
