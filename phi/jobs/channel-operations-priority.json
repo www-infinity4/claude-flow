@@ -99,6 +99,21 @@
         "peer_baseline": "HBO",
         "failure_result": "needs_work",
         "refill_required_on_failure": true
+      },
+      "repair_route": {
+        "role": "catalog-writer",
+        "handler": "channelCatalogWriter",
+        "workflow": "phi/catalog-refill.json",
+        "trigger_defects": [
+          "catalog-too-shallow",
+          "catalog-peer-overlap"
+        ],
+        "completion_requires": [
+          "runtime admissions",
+          "catalog freshness pass",
+          "post-write regression pass",
+          "independent verifier evidence"
+        ]
       }
     },
     {
@@ -149,6 +164,21 @@
         "peer_baseline": "HBO",
         "failure_result": "needs_work",
         "refill_required_on_failure": true
+      },
+      "repair_route": {
+        "role": "catalog-writer",
+        "handler": "channelCatalogWriter",
+        "workflow": "phi/catalog-refill.json",
+        "trigger_defects": [
+          "catalog-too-shallow",
+          "catalog-peer-overlap"
+        ],
+        "completion_requires": [
+          "runtime admissions",
+          "catalog freshness pass",
+          "post-write regression pass",
+          "independent verifier evidence"
+        ]
       }
     },
     {
