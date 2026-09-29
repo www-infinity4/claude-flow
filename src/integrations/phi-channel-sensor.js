@@ -85,3 +85,27 @@ export function compareChannelRegression(candidate, baseline) {
     candidateDefects: candidate.defects
   };
 }
+
+
+export function diagnosePlaybackTrace(trace = []) {
+  const loads = trace.filter(x => x.action === "player-load");
+  const seeks = trace.filter(x => x.action === "player-seek");
+  const remoteEvents = trace.filter(x => x.action === "remote-schedule-event");
+  const titleChanges = trace.filter(x => x.action === "title-change");
+  const defects = [];
+
+  const duplicateLoads = loads.filter((x, i) => i > 0 && x.videoId === loads[i-1].videoId && x.key === loads[i-1].key);
+  if (duplicateLoads.length) defects.push({ code:"duplicate-player-load", count:duplicateLoads.length });
+
+  const unchangedRemoteReloads = remoteEvents.filter(x => x.programChanged === false)
+    .filter(event => loads.some(load => load.at >= event.at && load.at - event.at < 1500 && load.authority === "remote"));
+  if (unchangedRemoteReloads.length) defects.push({ code:"remote-poll-triggered-reload", count:unchangedRemoteReloads.length });
+
+  const authorityFlaps = titleChanges.filter((x, i) => i > 0 && x.authority !== titleChanges[i-1].authority);
+  if (authorityFlaps.length) defects.push({ code:"title-authority-flap", count:authorityFlaps.length });
+
+  const aggressiveSeeks = seeks.filter(x => Math.abs(Number(x.driftSeconds || 0)) > 2.5);
+  if (aggressiveSeeks.length >= 2) defects.push({ code:"repeated-live-drift-seek", count:aggressiveSeeks.length });
+
+  return { passed:defects.length===0, defects, metrics:{ loads:loads.length, seeks:seeks.length, remoteEvents:remoteEvents.length, titleChanges:titleChanges.length } };
+}
