@@ -60,7 +60,7 @@
     "Discover candidate full-length sources.",
     "Normalize candidate metadata.",
     "Reject duplicates and policy failures.",
-    "Runtime-test candidate media in the same player path used by the channel.",
+    "Run verifyChannelCandidateAdmission against the actual target channel runtime; require playing state, visible video, and >=2 seconds time advancement.",
     "Add only verified candidates to the target catalog.",
     "Re-run inspectCatalogFreshness.",
     "Generate schedule and verify active/next slots use valid catalog assets.",
@@ -74,9 +74,19 @@
       "catalog source commit",
       "runtime media evidence for newly admitted assets",
       "schedule evidence",
-      "independent verifier"
+      "independent verifier",
+      "per-candidate admitted-for-catalog-write evidence"
     ],
     "missing_runtime_evidence": "needs_work",
     "discovery_only_is_not_completion": true
+  },
+  "admission_gate": {
+    "verifier": "verifyChannelCandidateAdmission",
+    "required_status": "admitted-for-catalog-write",
+    "minimum_time_advance_seconds": 2,
+    "visible_video_required": true,
+    "playing_state_required": true,
+    "console_and_screenshot_evidence": true,
+    "writer_must_reject_without_pass": true
   }
 }
