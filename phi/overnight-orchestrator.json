@@ -1,0 +1,186 @@
+{
+  "schema": "phi-overnight-orchestrator/v1",
+  "purpose": "Continuously audit the Phi repository estate, repair safe defects, verify runtime behavior, and leave evidence-backed morning status.",
+  "inputs": [
+    "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
+    "repository README implementation ledgers",
+    "phi/agent-roster.json"
+  ],
+  "phases": [
+    {
+      "id": "inventory",
+      "roles": [
+        "repo-reader"
+      ],
+      "actions": [
+        "enumerate accessible Phi repositories",
+        "classify active, archive, experiment, library, service, site",
+        "locate deployment/runtime and owning requirements",
+        "do not modify repositories during classification"
+      ]
+    },
+    {
+      "id": "requirements",
+      "roles": [
+        "intent-reader",
+        "router"
+      ],
+      "actions": [
+        "extract unresolved acceptance criteria",
+        "map each criterion to canonical repo/runtime",
+        "create scoped jobs rather than repo-wide rewrites"
+      ]
+    },
+    {
+      "id": "baseline",
+      "roles": [
+        "runtime-sensor",
+        "ui-sensor",
+        "media-sensor",
+        "data-sensor",
+        "wallet-sensor",
+        "schedule-sensor"
+      ],
+      "actions": [
+        "capture before evidence appropriate to job",
+        "skip irrelevant sensors",
+        "record broken behavior before repair"
+      ]
+    },
+    {
+      "id": "repair",
+      "roles": [
+        "frontend-writer",
+        "backend-writer",
+        "catalog-writer",
+        "integration-writer"
+      ],
+      "actions": [
+        "make smallest scoped repair",
+        "preserve working behavior",
+        "avoid unrelated style or architecture churn",
+        "create child job for separate defects"
+      ]
+    },
+    {
+      "id": "verify",
+      "roles": [
+        "independent-verifier"
+      ],
+      "actions": [
+        "verifier must differ from writer",
+        "test exact acceptance criteria on deployed/runtime target when applicable",
+        "run regression checks on shared dependencies",
+        "return needs_work when evidence is insufficient"
+      ]
+    },
+    {
+      "id": "evidence",
+      "roles": [
+        "independent-verifier"
+      ],
+      "actions": [
+        "record repository, requirement, commit SHA, deployment/runtime, tests, timestamp, result and remaining defects",
+        "only verified jobs may become complete"
+      ]
+    },
+    {
+      "id": "report",
+      "roles": [
+        "router"
+      ],
+      "actions": [
+        "summarize repositories scanned, jobs repaired, jobs verified, regressions found, blocked decisions and remaining unresolved work"
+      ]
+    }
+  ],
+  "unattended_allowed": [
+    "read repositories and implementation ledgers",
+    "classify and create scoped repair jobs",
+    "repair broken internal code, layouts, searches, media handling, schedules and integrations when no consequential external action is required",
+    "run builds/tests/runtime checks",
+    "deploy repairs through an already-authorized existing deployment path when the change is reversible and within the repository's established purpose",
+    "record evidence and update implementation status after independent verification"
+  ],
+  "requires_user_authorization": [
+    "publish a new product or marketplace listing for sale",
+    "spend money or purchase paid services",
+    "transfer wallet assets or settle a real-value transaction",
+    "send messages to third parties as the user",
+    "expose, export or broaden access to customer shipping or other private information",
+    "delete repositories, durable customer/order data, or financial ledger history",
+    "change ownership, account recovery, authentication policy, secrets or payment credentials"
+  ],
+  "regression_groups": [
+    {
+      "id": "channels",
+      "members": [
+        "HBO",
+        "Cinemax",
+        "Showtime",
+        "Cartoon Network",
+        "other TV channel players"
+      ],
+      "rule": "a channel repair must not regress working sibling playback or schedules"
+    },
+    {
+      "id": "wallet",
+      "members": [
+        "Control Phi",
+        "Quanta Phi",
+        "Infinity Phi",
+        "Infinity Radio",
+        "Shop Phi"
+      ],
+      "rule": "wallet repair must not create divergent balances or duplicate credits"
+    },
+    {
+      "id": "commerce",
+      "members": [
+        "Infinity Phi ad cards",
+        "Shop Phi",
+        "Build Phi",
+        "Control Phi orders"
+      ],
+      "rule": "commerce UI repair must preserve cart, reward, order and privacy boundaries"
+    },
+    {
+      "id": "media",
+      "members": [
+        "Infinity Phi",
+        "Quanta Phi",
+        "Infinity Radio",
+        "Alien Coin"
+      ],
+      "rule": "media repair must preserve playable known-good sources and phone-first layout"
+    }
+  ],
+  "completion_evidence": [
+    "owning repository identified",
+    "acceptance criterion identified",
+    "before evidence when applicable",
+    "code/config/data change recorded",
+    "commit SHA",
+    "deployment/runtime target when applicable",
+    "exact behavior test",
+    "shared regression checks",
+    "independent verifier result"
+  ],
+  "morning_report": {
+    "sections": [
+      "estate inventory",
+      "verified repairs",
+      "deployed changes",
+      "regressions prevented or found",
+      "blocked approvals",
+      "remaining red backlog",
+      "next recommended jobs"
+    ]
+  },
+  "limits": {
+    "writer_must_not_verify_own_job": true,
+    "successful_build_is_not_runtime_verification": true,
+    "discussion_is_not_implementation": true,
+    "commit_is_not_completion": true
+  }
+}
