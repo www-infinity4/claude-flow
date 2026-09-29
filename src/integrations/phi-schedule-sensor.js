@@ -68,3 +68,20 @@ export function compareServedToScheduled({ scheduled, served }) {
   }
   return { passed:defects.length===0, defects };
 }
+
+
+export function inspectCatalogFreshness(catalog = [], peerCatalogs = [], { minUniqueAssets = 12, maxPeerOverlapRatio = 0.5 } = {}) {
+  const ids = new Set((catalog || []).map(x => x && (x.videoId || x.assetId || x.id)).filter(Boolean));
+  const defects = [];
+  if (ids.size < minUniqueAssets) defects.push({ code:"catalog-too-shallow", uniqueAssets:ids.size, minimum:minUniqueAssets });
+
+  const peerResults = (peerCatalogs || []).map(peer => {
+    const peerIds = new Set(((peer && peer.catalog) || []).map(x => x && (x.videoId || x.assetId || x.id)).filter(Boolean));
+    const overlap = [...ids].filter(id => peerIds.has(id));
+    const ratio = ids.size ? overlap.length / ids.size : 0;
+    if (ratio > maxPeerOverlapRatio) defects.push({ code:"catalog-peer-overlap", peer:peer && peer.name, overlap:overlap.length, ratio });
+    return { peer:peer && peer.name, overlap:overlap.length, ratio };
+  });
+
+  return { passed:defects.length===0, defects, metrics:{ uniqueAssets:ids.size, peerResults } };
+}
