@@ -1,0 +1,79 @@
+{
+  "schema": "phi-runtime-evidence/v1",
+  "purpose": "Define the minimum evidence required before a Phi job may claim deployed/runtime verification.",
+  "states": [
+    "not_checked",
+    "source_verified",
+    "deployment_verified",
+    "runtime_verified",
+    "needs_work",
+    "blocked"
+  ],
+  "evidence_types": {
+    "source": {
+      "required": [
+        "repository_full_name",
+        "path",
+        "ref_or_sha"
+      ],
+      "note": "Source inspection alone cannot satisfy runtime acceptance checks."
+    },
+    "deployment": {
+      "required": [
+        "repository_full_name",
+        "commit_sha",
+        "deployment_or_workflow_result"
+      ],
+      "note": "A successful build/deploy proves delivery, not UI behavior."
+    },
+    "browser": {
+      "required": [
+        "runtime_url",
+        "checked_at",
+        "device_profile",
+        "steps",
+        "observations"
+      ],
+      "optional": [
+        "screenshots",
+        "console_errors",
+        "network_failures"
+      ]
+    },
+    "api": {
+      "required": [
+        "endpoint",
+        "checked_at",
+        "request_summary",
+        "status",
+        "response_assertions"
+      ]
+    },
+    "media": {
+      "required": [
+        "runtime_url",
+        "checked_at",
+        "asset_or_slot",
+        "playback_duration_observed",
+        "restart_or_error_observed"
+      ]
+    },
+    "persistence": {
+      "required": [
+        "surface",
+        "checked_at",
+        "write_action",
+        "reload_or_second_read",
+        "observed_value"
+      ]
+    }
+  },
+  "rules": [
+    "Runtime acceptance criteria require browser, API, media, or persistence evidence appropriate to the criterion.",
+    "No agent may translate missing evidence into passed evidence.",
+    "Source verified and deployment verified are distinct from runtime verified.",
+    "If the connected environment cannot exercise the required runtime, return needs_work with missing evidence named.",
+    "Independent verifier records evidence after the writer and may not alter source or deployment.",
+    "Android-specific bugs require an Android/mobile profile when browser tooling supports it; otherwise record the profile limitation."
+  ]
+}
