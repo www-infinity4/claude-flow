@@ -82,6 +82,18 @@ RED means unresolved. Claude-Flow, Monitor, ChatGPT, and future agents must not 
 - [ ] Final Deploy Website publishes a durable Web Phi revision.
 - [ ] Cloudflare Browser /code-phi/inspect needs end-to-end runtime/media/layout/accessibility verification and repair evidence.
 
+## Quant click/event data pipeline
+- [ ] Treat structured, permitted interaction history as core Quant metadata: searches, result/card clicks, media interactions, product/category clicks, collects, shares, purchases, sequence, timestamps, source Phi surface, and active media context where appropriate.
+- [ ] Maintain an active-Quant/session association so events are attached to the correct originating Quant rather than a global undifferentiated click log.
+- [ ] Normalize events into a versioned schema with event ID, Quant ID, actor/owner scope, event type, target/entity IDs, timestamp, source surface, provenance, and allowed metadata.
+- [ ] Persist events durably in Cloudflare/D1 and index them for Quant-level retrieval and permitted aggregate analysis.
+- [ ] Preserve provenance and ordering so a receiving AI can distinguish search → click → collect → purchase relationships.
+- [ ] Make the creator's unified wallet expose the Quant's useful indexed activity summary without dumping unnecessary raw personal data into the UI.
+- [ ] Define transfer permissions for Quant metadata. Transfer only data the system is permitted to carry; keep shipping addresses, payment credentials, private messages, authentication secrets, and other sensitive fulfillment/account data outside transferable Quant metadata.
+- [ ] Provide recipient-AI interpretation interfaces for permitted matching/recommendation/advertising use without claiming that data guarantees a monetary token value.
+- [ ] Add retention/deletion/privacy controls and document which event classes are collected and why.
+- [ ] Verify click/event capture across Infinity Phi, Quanta Phi, Shop Phi, Infinity Radio, News Phi, and other participating Phi surfaces without double-counting events.
+
 ## Claude-Flow / Monitor
 - [ ] Deploy and verify Monitor flow routes described in docs/phi-cloudflare.md.
 - [ ] Persist flow runs/tasks/events in Monitor D1 and reference existing Quant IDs.
