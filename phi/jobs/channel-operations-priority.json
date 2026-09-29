@@ -25,7 +25,8 @@
         "Displayed title remains aligned with the currently served asset.",
         "Scheduled asset matches served asset.",
         "Video and audio remain available.",
-        "HBO baseline does not gain a new playback, title, schedule, or media defect."
+        "HBO baseline does not gain a new playback, title, schedule, or media defect.",
+        "Runtime playback trace contains no duplicate-player-load, remote-poll-triggered-reload, title-authority-flap, or repeated-live-drift-seek defect."
       ],
       "regression_group": "channels",
       "risk": "shared-runtime",
@@ -38,9 +39,17 @@
         "repair commit if changed",
         "after playback samples",
         "HBO regression comparison",
-        "independent verifier result"
+        "independent verifier result",
+        "window.__INFINITY_PLAYBACK_TRACE captured after at least 35 seconds of entered playback",
+        "diagnosePlaybackTrace result"
       ],
-      "repository_full_name": "www-infinity4/TNT"
+      "repository_full_name": "www-infinity4/TNT",
+      "runtime_evidence_gate": {
+        "minimum_observation_ms": 35000,
+        "required_trace": "window.__INFINITY_PLAYBACK_TRACE",
+        "missing_trace_result": "needs_work",
+        "source_inspection_may_not_mark_verified": true
+      }
     },
     {
       "job_key": "tv-database:cinemax:fresh-schedule",
