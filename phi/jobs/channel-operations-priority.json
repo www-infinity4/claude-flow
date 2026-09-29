@@ -1,13 +1,13 @@
 {
   "schema": "phi-repair-jobs/v1",
-  "repository_full_name": "www-infinity4/TV-Database",
+  "repository_full_name": "www-infinity4/TNT",
   "shared_regression_baseline": "HBO",
   "jobs": [
     {
       "job_key": "tv-database:cartoon-network:restart-loop",
       "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
       "requirement_text": "Repair Cartoon Network playback restarting/looping and stale or flapping title metadata without regressing shared channel playback.",
-      "runtime_target": "Cartoon Network",
+      "runtime_target": "https://www-infinity4.github.io/Cartoon-Network/",
       "classification": "active-service",
       "priority": "production-broken",
       "specialist_roles": [
@@ -31,6 +31,7 @@
       "risk": "shared-runtime",
       "authorization_required": false,
       "evidence_required": [
+        "channel repository ownership resolution before scoped write",
         "before playback samples",
         "active schedule slot",
         "served asset/title",
@@ -38,13 +39,14 @@
         "after playback samples",
         "HBO regression comparison",
         "independent verifier result"
-      ]
+      ],
+      "repository_full_name": "www-infinity4/TNT"
     },
     {
       "job_key": "tv-database:cinemax:fresh-schedule",
       "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
       "requirement_text": "Ensure Cinemax serves the current generated Cloudflare schedule/catalog rather than stale prior programming.",
-      "runtime_target": "Cinemax",
+      "runtime_target": "https://www-infinity4.github.io/Cinemax/",
       "classification": "active-service",
       "priority": "production-broken",
       "specialist_roles": [
@@ -69,6 +71,7 @@
       "risk": "shared-runtime",
       "authorization_required": false,
       "evidence_required": [
+        "channel repository ownership resolution before scoped write",
         "schedule version",
         "active slot",
         "catalog lookup",
@@ -76,13 +79,14 @@
         "after playback samples",
         "HBO regression comparison",
         "independent verifier result"
-      ]
+      ],
+      "repository_full_name": "www-infinity4/TNT"
     },
     {
       "job_key": "tv-database:showtime:fresh-schedule",
       "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
       "requirement_text": "Ensure Showtime serves the current generated Cloudflare schedule/catalog rather than stale prior programming.",
-      "runtime_target": "Showtime",
+      "runtime_target": "https://www-infinity4.github.io/Showtime/",
       "classification": "active-service",
       "priority": "production-broken",
       "specialist_roles": [
@@ -107,6 +111,7 @@
       "risk": "shared-runtime",
       "authorization_required": false,
       "evidence_required": [
+        "channel repository ownership resolution before scoped write",
         "schedule version",
         "active slot",
         "catalog lookup",
@@ -114,13 +119,14 @@
         "after playback samples",
         "HBO regression comparison",
         "independent verifier result"
-      ]
+      ],
+      "repository_full_name": "www-infinity4/TNT"
     },
     {
       "job_key": "tv-database:hbo:preservation-baseline",
       "requirement_source": "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
       "requirement_text": "Use HBO as the current preservation baseline while shared channel repairs are made; diagnose it if evidence shows a regression but do not rewrite it merely because another channel is broken.",
-      "runtime_target": "HBO",
+      "runtime_target": "https://www-infinity4.github.io/HBO/",
       "classification": "active-service",
       "priority": "shared-runtime",
       "specialist_roles": [
@@ -140,12 +146,16 @@
       "risk": "read-only",
       "authorization_required": false,
       "evidence_required": [
+        "channel repository ownership resolution before scoped write",
         "baseline playback samples",
         "active slot",
         "served state",
         "console/network observations",
         "verifier result"
-      ]
+      ],
+      "repository_full_name": "www-infinity4/TNT"
     }
-  ]
+  ],
+  "architecture_note": "TNT owns the shared channel network/player/schedule integration. Individual channel slugs are separate live runtimes and may have their own repositories; resolve the channel repository before a scoped write. TV-Database consumes TNT/channels.js and is not the default repair owner.",
+  "shared_network_repository": "www-infinity4/TNT"
 }
