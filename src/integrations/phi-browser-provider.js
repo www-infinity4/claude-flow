@@ -71,3 +71,34 @@ export async function verifyMercuryCollectRuntime({ browser, runtimeUrl }) {
     notes: "This verifier does not submit checkout or perform a Quant transfer."
   };
 }
+
+
+export async function captureChannelPlaybackTrace({ browser, runtimeUrl, observeMs = 35000 }) {
+  need(browser, "browser capabilities");
+  need(runtimeUrl, "runtimeUrl");
+  const evidence = {
+    runtime_url: runtimeUrl,
+    checked_at: new Date().toISOString(),
+    device_profile: "android-mobile",
+    observe_ms: observeMs,
+    observations: {}
+  };
+
+  await browser.navigate({ url: runtimeUrl, device: "android-mobile" });
+  const enter = await browser.find({ role:"button", name:/Enter Cartoon Network/i });
+  if (enter) await browser.click(enter);
+  await browser.wait({ ms: observeMs });
+
+  evidence.observations.trace = await browser.evaluate(() =>
+    Array.isArray(window.__INFINITY_PLAYBACK_TRACE) ? window.__INFINITY_PLAYBACK_TRACE.slice() : []
+  );
+  evidence.observations.player = await browser.mediaTest({ selector:"#player", observeMs:2000 });
+  evidence.observations.console_errors = await browser.console();
+  evidence.observations.screenshot = await browser.screenshot({ name:"cartoon-playback-trace", fullPage:true });
+
+  return {
+    passed: evidence.observations.trace.length > 0,
+    evidence,
+    notes: evidence.observations.trace.length ? "Playback authority trace captured." : "Runtime trace unavailable; do not claim the channel verified."
+  };
+}
