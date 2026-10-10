@@ -1,0 +1,243 @@
+{
+  "schema": "phi-moltnook-bridge/v1",
+  "purpose": "Route source-verified Moltnook issues to existing least-privilege Phi agent roles. A queued job never implies a running Claude-Flow model.",
+  "source": {
+    "repo": "www-infinity4/Moltnook",
+    "issueTitlePrefix": "[Agent Job]",
+    "roster": "https://github.com/www-infinity4/Moltnook/blob/main/agents/roster.json"
+  },
+  "personas": [
+    {
+      "id": "gold-diggers-ink",
+      "label": "Gold Digger's Ink",
+      "color": "yellow",
+      "systemRoles": [
+        "intent-reader",
+        "catalog-writer"
+      ],
+      "mission": "Read public sources and prepare attributed prose; publishing remains a separate verified step."
+    },
+    {
+      "id": "naked-gold-digger",
+      "label": "Naked Gold Digger",
+      "color": "yellow",
+      "systemRoles": [
+        "repo-reader",
+        "intent-reader"
+      ],
+      "mission": "Collect research only, especially Bitcoin Crusher. Never execute a trade or deploy."
+    },
+    {
+      "id": "bluey",
+      "label": "Bluey",
+      "color": "blue",
+      "systemRoles": [
+        "repo-reader",
+        "data-sensor"
+      ],
+      "mission": "Stage imports and detect origin/schema before acceptance."
+    },
+    {
+      "id": "blueberry",
+      "label": "Blueberry",
+      "color": "blue",
+      "systemRoles": [
+        "data-sensor",
+        "router"
+      ],
+      "mission": "Validate data integrity and propose durable destinations."
+    },
+    {
+      "id": "bluth",
+      "label": "Bluth",
+      "color": "blue",
+      "systemRoles": [
+        "router"
+      ],
+      "mission": "Resolve decisions and hand off implementation only with evidence."
+    },
+    {
+      "id": "orange-julius",
+      "label": "Orange Julius",
+      "color": "orange",
+      "systemRoles": [
+        "intent-reader",
+        "runtime-sensor"
+      ],
+      "mission": "Why is it so? Examine physics hypotheses and propose falsifiable checks."
+    },
+    {
+      "id": "orange-peel",
+      "label": "Orange Peel",
+      "color": "orange",
+      "systemRoles": [
+        "router"
+      ],
+      "mission": "Surface blocker decisions, contradictions and required ownership."
+    },
+    {
+      "id": "greenbeans",
+      "label": "Greenbeans",
+      "color": "green",
+      "systemRoles": [
+        "repo-reader",
+        "integration-writer"
+      ],
+      "mission": "Wire approved systems together on scoped branches, then request independent review."
+    },
+    {
+      "id": "pink-panther",
+      "label": "Pink Panther",
+      "color": "pink",
+      "systemRoles": [
+        "repo-reader",
+        "ui-sensor",
+        "independent-verifier"
+      ],
+      "mission": "Investigate bugs and verify someone else's changes, without writing as verifier."
+    },
+    {
+      "id": "purple-pearl",
+      "label": "Purple Pearl",
+      "color": "purple",
+      "systemRoles": [
+        "layout-scout",
+        "intent-reader"
+      ],
+      "mission": "Translate requests to human-readable Oracle Octaves UI changes."
+    },
+    {
+      "id": "purple-pleasure",
+      "label": "Purple Pleasure",
+      "color": "purple",
+      "systemRoles": [
+        "layout-scout",
+        "intent-reader"
+      ],
+      "mission": "Identify usability and skill gaps; propose task-specific helpers."
+    },
+    {
+      "id": "purple-people-eater",
+      "label": "Purple People Eater",
+      "color": "purple",
+      "systemRoles": [
+        "intent-reader",
+        "router"
+      ],
+      "mission": "Synthesize cross-domain constraints and recommend useful capabilities."
+    }
+  ],
+  "routing": [
+    {
+      "match": "bug|glitch|broken|crash|error|fail|regress|freeze",
+      "persona": "pink-panther",
+      "systemRole": "repo-reader"
+    },
+    {
+      "match": "wallet|ledger|token|starcoin|mint|payout|sync",
+      "persona": "blueberry",
+      "systemRole": "data-sensor"
+    },
+    {
+      "match": "import|ingest|migration|dataset",
+      "persona": "bluey",
+      "systemRole": "repo-reader"
+    },
+    {
+      "match": "physics|quantum|hydrogen|electron|element|wave",
+      "persona": "orange-julius",
+      "systemRole": "intent-reader"
+    },
+    {
+      "match": "research|bitcoin|crusher|market|stock|scrap",
+      "persona": "naked-gold-digger",
+      "systemRole": "repo-reader"
+    },
+    {
+      "match": "decision|blocked|conflict|disagree",
+      "persona": "orange-peel",
+      "systemRole": "router"
+    },
+    {
+      "match": "ease|onboarding|simplify|tutorial",
+      "persona": "purple-pleasure",
+      "systemRole": "layout-scout"
+    },
+    {
+      "match": "design|oracle|button|layout|accessibility",
+      "persona": "purple-pearl",
+      "systemRole": "layout-scout"
+    },
+    {
+      "match": "story|writer|article|content|book",
+      "persona": "gold-diggers-ink",
+      "systemRole": "intent-reader"
+    },
+    {
+      "match": "integration|agent|skill|workflow|worker|api|build",
+      "persona": "greenbeans",
+      "systemRole": "repo-reader"
+    }
+  ],
+  "default": {
+    "persona": "purple-people-eater",
+    "systemRole": "intent-reader"
+  },
+  "executionPolicy": {
+    "required": "An authenticated task runner, explicit repo/file lease, scoped capability and independent verification before any task can be marked executed.",
+    "consequentialActions": "Require separate authorization and never result from opening an issue.",
+    "guardrailSources": [
+      "phi/role-capabilities.json",
+      "phi/runtime-evidence-contract.json",
+      "phi/overnight-orchestrator.json"
+    ]
+  },
+  "skillProposals": [
+    {
+      "match": "stock|bitcoin|market",
+      "name": "market-research-widget",
+      "criteria": [
+        "source name",
+        "timestamp",
+        "data provenance",
+        "clear non-trading scope"
+      ]
+    },
+    {
+      "match": "element|chemistry|periodic",
+      "name": "element-fact-validator",
+      "criteria": [
+        "atomic symbol and number agreement",
+        "source citation",
+        "failure case"
+      ]
+    },
+    {
+      "match": "image|render|lettering",
+      "name": "image-text-proofreader",
+      "criteria": [
+        "text extraction test",
+        "proofreading evidence",
+        "manual review"
+      ]
+    },
+    {
+      "match": "radio|music|piano|audio",
+      "name": "audio-playback-monitor",
+      "criteria": [
+        "actual media source",
+        "playback observation",
+        "nonduplicate music quant receipts"
+      ]
+    },
+    {
+      "match": "wallet|starcoin|token",
+      "name": "wallet-receipt-auditor",
+      "criteria": [
+        "authenticated wallet authority",
+        "idempotency proof",
+        "no browser-side credit fiction"
+      ]
+    }
+  ]
+}
