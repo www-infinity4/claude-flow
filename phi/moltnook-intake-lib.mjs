@@ -25,7 +25,9 @@ export function convertIssue(issue,config) {
     proposed_persona:route.persona,
     approved_system_role:route.systemRole,
     proposed_skills:route.skills,
-    repo_scope:'www-infinity4/Moltnook',
+    repo_scope:null,
+    scope_requires_resolution:true,
+    issue_host:'www-infinity4/Oracle-Octaves',
     authorization_required:/\b(wallet|token|payout|payment|secrets|identity|governance|government|deploy)\b/i.test(issue.title),
     evidence_required:['issue source URL','scoped repository/commit','test results','independent verifier receipt'],
     receipt:null
