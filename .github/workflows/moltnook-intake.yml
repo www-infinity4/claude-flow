@@ -10,6 +10,9 @@ on:
       - "phi/moltnook-intake-lib.mjs"
       - "phi/scripts/refresh-moltnook-intake.mjs"
       - "phi/tests/moltnook-intake.test.mjs"
+      - "phi/tests/moltnook-observer.test.mjs"
+      - "phi/moltnook-observer-lib.mjs"
+      - "phi/scripts/run-moltnook-observer.mjs"
       - ".github/workflows/moltnook-intake.yml"
 
 permissions:
@@ -28,16 +31,22 @@ jobs:
         with:
           node-version: "20"
       - name: Validate existing role capability boundaries
-        run: node --test phi/tests/moltnook-intake.test.mjs
+        run: node --test phi/tests/moltnook-intake.test.mjs phi/tests/moltnook-observer.test.mjs
       - name: Import visible Moltnook agent jobs
         run: node phi/scripts/refresh-moltnook-intake.mjs
-      - name: Persist queued jobs with no execution claim
+      - name: Verify owner's Claude-Flow binary is callable
+        run: node bin/claude-flow.js --version
+      - name: Execute bounded repository readers and independent source verifier
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node phi/scripts/run-moltnook-observer.mjs
+      - name: Persist queued jobs and verified tool observations
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add phi/state/moltnook-intake.json
+          git add phi/state/moltnook-intake.json phi/state/moltnook-conversation.json phi/state/moltnook-runs.json
           if ! git diff --cached --quiet; then
-            git commit -m "Refresh source-verified Moltnook agent intake [skip ci]"
+            git commit -m "Run read-only Phi agent tools and publish evidence receipts [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
