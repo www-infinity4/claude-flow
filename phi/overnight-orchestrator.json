@@ -4,7 +4,8 @@
   "inputs": [
     "docs/PHI-MASTER-RED-BACKLOG-2026-09-28.md",
     "repository README implementation ledgers",
-    "phi/agent-roster.json"
+    "phi/agent-roster.json",
+    "https://github.com/www-infinity4/Moltnook/blob/main/agents/execution-contract.json"
   ],
   "phases": [
     {
@@ -182,5 +183,17 @@
     "successful_build_is_not_runtime_verification": true,
     "discussion_is_not_implementation": true,
     "commit_is_not_completion": true
-  }
+  },
+  "execution_adapters": {
+    "moltnook": {
+      "repository": "www-infinity4/Moltnook",
+      "workflow": ".github/workflows/moltnook-model-repair.yml",
+      "model": "Infinity GPT gateway",
+      "scope": "Oracle presentation files only",
+      "browser": "Cloudflare Browser Rendering, 360x800",
+      "state": "adapter published; model patch output and persistent browser credential unresolved"
+    },
+    "other_repositories": "Use an explicitly configured scoped writer and deployed-runtime verifier; do not substitute source observations for repairs"
+  },
+  "design_policy": "Oracle Octaves for all new work (New York) and pages being upgraded. Android first. Keep existing integrations."
 }
