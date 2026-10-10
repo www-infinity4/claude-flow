@@ -1,0 +1,43 @@
+name: Phi Moltnook intake bridge
+on:
+  schedule:
+    - cron: "27 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "phi/moltnook-agent-bridge.json"
+      - "phi/moltnook-intake-lib.mjs"
+      - "phi/scripts/refresh-moltnook-intake.mjs"
+      - "phi/tests/moltnook-intake.test.mjs"
+      - ".github/workflows/moltnook-intake.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: phi-moltnook-intake
+  cancel-in-progress: false
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validate existing role capability boundaries
+        run: node --test phi/tests/moltnook-intake.test.mjs
+      - name: Import visible Moltnook agent jobs
+        run: node phi/scripts/refresh-moltnook-intake.mjs
+      - name: Persist queued jobs with no execution claim
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add phi/state/moltnook-intake.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh source-verified Moltnook agent intake [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
