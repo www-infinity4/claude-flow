@@ -41,6 +41,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node phi/scripts/run-moltnook-observer.mjs
+      - name: Check tool probe source syntax
+        run: node --check phi/scripts/probe-moltnook-tools.mjs
       - name: Verify available tool connections and fixed runtime targets
         run: node phi/scripts/probe-moltnook-tools.mjs
       - name: Persist queued jobs and verified tool observations
