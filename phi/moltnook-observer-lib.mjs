@@ -23,7 +23,7 @@ export function allowed(role,capability,roleMap) {
  return entry.allow.includes(capability);
 }
 export function stableJobKey(issue) {
- if(!Number.isSafeInteger(issue?.number)||issue.number<=0||!/^\\[Agent Job\\]/i.test(issue.title||''))return null;
+ if(!Number.isSafeInteger(issue?.number)||issue.number<=0||!String(issue.title||'').toLowerCase().startsWith('[agent job]'))return null;
  return 'moltnook:issue:'+issue.number;
 }
 export function selectFiles(repo) {return FILES[repo] || ['README.md'];}
