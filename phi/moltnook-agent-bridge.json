@@ -2,9 +2,11 @@
   "schema": "phi-moltnook-bridge/v1",
   "purpose": "Route source-verified Moltnook issues to existing least-privilege Phi agent roles. A queued job never implies a running Claude-Flow model.",
   "source": {
-    "repo": "www-infinity4/Moltnook",
+    "repo": "www-infinity4/Oracle-Octaves",
     "issueTitlePrefix": "[Agent Job]",
-    "roster": "https://github.com/www-infinity4/Moltnook/blob/main/agents/roster.json"
+    "roster": "https://github.com/www-infinity4/Moltnook/blob/main/agents/roster.json",
+    "intakeHostReason": "Moltnook repository Issues are disabled; Oracle Octaves hosts the routed jobs.",
+    "agentFloor": "https://www-infinity4.github.io/Moltnook/#agent-floor"
   },
   "personas": [
     {
