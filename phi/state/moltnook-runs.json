@@ -1,34 +1,34 @@
 {
   "schema": "phi-moltnook-observer-runs/v1",
-  "generated_at": "2026-10-13T12:51:09.002Z",
-  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38400346053",
+  "generated_at": "2026-10-13T13:44:10.591Z",
+  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38407360903",
   "source": "GitHub API verified GET requests",
   "github_requests": 5,
   "jobs": [
     {
       "job_key": "moltnook:issue:9",
       "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/9",
-      "run_id": "38400346053",
-      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38400346053",
+      "run_id": "38407360903",
+      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38407360903",
       "executor": "phi-readonly-github-observer-v1",
       "model_execution": false,
-      "started_at": "2026-10-13T12:51:07.828Z",
+      "started_at": "2026-10-13T13:44:09.365Z",
       "status": "blocked",
       "source_verification": "not_checked",
       "records": [],
       "verifier": null,
       "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
       "error": "No public first-party repository found in issue; scope remains unresolved.",
-      "finished_at": "2026-10-13T12:51:08.161Z"
+      "finished_at": "2026-10-13T13:44:09.700Z"
     },
     {
       "job_key": "moltnook:issue:8",
       "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/8",
-      "run_id": "38400346053",
-      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38400346053",
+      "run_id": "38407360903",
+      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38407360903",
       "executor": "phi-readonly-github-observer-v1",
       "model_execution": false,
-      "started_at": "2026-10-13T12:51:08.161Z",
+      "started_at": "2026-10-13T13:44:09.700Z",
       "status": "read_only_checked",
       "source_verification": "source_verified",
       "records": [
@@ -52,10 +52,10 @@
         "expected_sha": "dbf78c647ad0eb33b5e5873e0f09412168f4e342",
         "observed_sha": "dbf78c647ad0eb33b5e5873e0f09412168f4e342",
         "matched": true,
-        "checked_at": "2026-10-13T12:51:09.002Z"
+        "checked_at": "2026-10-13T13:44:10.591Z"
       },
       "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
-      "finished_at": "2026-10-13T12:51:09.002Z"
+      "finished_at": "2026-10-13T13:44:10.591Z"
     }
   ]
 }
