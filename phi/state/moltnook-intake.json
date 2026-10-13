@@ -1,13 +1,61 @@
 {
   "schema": "phi-moltnook-intake/v1",
-  "refreshed_at": "2026-10-13T21:31:10.364Z",
+  "refreshed_at": "2026-10-13T22:32:15.620Z",
   "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues",
   "source_scope": "public Oracle-Octaves agent issues, first 100 by updated time (Moltnook Issues disabled)",
   "coverage_complete": true,
   "purpose": "Verified job candidates, NOT launched agents or executed changes.",
   "claude_flow_runner_status": "not_connected",
-  "count": 6,
+  "count": 8,
   "jobs": [
+    {
+      "job_key": "moltnook:issue:11",
+      "issue_number": 11,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/11",
+      "title": "[Agent Job] Browser repair www-infinity4/QuantaPhi #phiVideoBuilder",
+      "updated_at": "2026-10-13T21:39:20Z",
+      "source_state": "open",
+      "status": "queued",
+      "execution_status": "not_started",
+      "proposed_persona": "greenbeans",
+      "approved_system_role": "repo-reader",
+      "proposed_skills": [],
+      "repo_scope": null,
+      "scope_requires_resolution": true,
+      "issue_host": "www-infinity4/Oracle-Octaves",
+      "authorization_required": false,
+      "evidence_required": [
+        "issue source URL",
+        "scoped repository/commit",
+        "test results",
+        "independent verifier receipt"
+      ],
+      "receipt": null
+    },
+    {
+      "job_key": "moltnook:issue:10",
+      "issue_number": 10,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/10",
+      "title": "[Agent Job] Browser repair www-infinity4/Omni-Phi #assetFile",
+      "updated_at": "2026-10-13T21:39:20Z",
+      "source_state": "open",
+      "status": "queued",
+      "execution_status": "not_started",
+      "proposed_persona": "greenbeans",
+      "approved_system_role": "repo-reader",
+      "proposed_skills": [],
+      "repo_scope": null,
+      "scope_requires_resolution": true,
+      "issue_host": "www-infinity4/Oracle-Octaves",
+      "authorization_required": false,
+      "evidence_required": [
+        "issue source URL",
+        "scoped repository/commit",
+        "test results",
+        "independent verifier receipt"
+      ],
+      "receipt": null
+    },
     {
       "job_key": "moltnook:issue:9",
       "issue_number": 9,
