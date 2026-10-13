@@ -1,46 +1,46 @@
 {
   "schema": "phi-moltnook-observer-runs/v1",
-  "generated_at": "2026-10-13T08:49:08.177Z",
-  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38371855888",
+  "generated_at": "2026-10-13T09:41:27.392Z",
+  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38378091574",
   "source": "GitHub API verified GET requests",
   "github_requests": 5,
   "jobs": [
     {
       "job_key": "moltnook:issue:9",
       "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/9",
-      "run_id": "38371855888",
-      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38371855888",
+      "run_id": "38378091574",
+      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38378091574",
       "executor": "phi-readonly-github-observer-v1",
       "model_execution": false,
-      "started_at": "2026-10-13T08:49:06.616Z",
+      "started_at": "2026-10-13T09:41:26.291Z",
       "status": "blocked",
       "source_verification": "not_checked",
       "records": [],
       "verifier": null,
       "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
       "error": "No public first-party repository found in issue; scope remains unresolved.",
-      "finished_at": "2026-10-13T08:49:06.994Z"
+      "finished_at": "2026-10-13T09:41:26.651Z"
     },
     {
       "job_key": "moltnook:issue:8",
       "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/8",
-      "run_id": "38371855888",
-      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38371855888",
+      "run_id": "38378091574",
+      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/38378091574",
       "executor": "phi-readonly-github-observer-v1",
       "model_execution": false,
-      "started_at": "2026-10-13T08:49:06.994Z",
+      "started_at": "2026-10-13T09:41:26.651Z",
       "status": "read_only_checked",
       "source_verification": "source_verified",
       "records": [
         {
           "repo": "www-infinity4/QuantaPhi",
-          "revision": "7da1629317b67a2dcb42ea0368658f201365cc83",
+          "revision": "61b594ff6bb05a7181095a64f9f41e9a1c275a0c",
           "observations": [
             {
               "path": "README.md",
               "sha": "dbf78c647ad0eb33b5e5873e0f09412168f4e342",
               "ok": true,
-              "url": "https://github.com/www-infinity4/QuantaPhi/blob/7da1629317b67a2dcb42ea0368658f201365cc83/README.md"
+              "url": "https://github.com/www-infinity4/QuantaPhi/blob/61b594ff6bb05a7181095a64f9f41e9a1c275a0c/README.md"
             }
           ]
         }
@@ -52,10 +52,10 @@
         "expected_sha": "dbf78c647ad0eb33b5e5873e0f09412168f4e342",
         "observed_sha": "dbf78c647ad0eb33b5e5873e0f09412168f4e342",
         "matched": true,
-        "checked_at": "2026-10-13T08:49:08.177Z"
+        "checked_at": "2026-10-13T09:41:27.392Z"
       },
       "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
-      "finished_at": "2026-10-13T08:49:08.177Z"
+      "finished_at": "2026-10-13T09:41:27.392Z"
     }
   ]
 }
