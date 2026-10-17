@@ -1,18 +1,18 @@
 {
   "schema": "phi-moltnook-observer-runs/v1",
-  "generated_at": "2026-10-17T06:44:38.166Z",
-  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/39011020138",
+  "generated_at": "2026-10-17T07:33:14.737Z",
+  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/39014044785",
   "source": "GitHub API verified GET requests",
   "github_requests": 14,
   "jobs": [
     {
-      "job_key": "moltnook:issue:89",
-      "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/89",
-      "run_id": "39011020138",
-      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/39011020138",
+      "job_key": "moltnook:issue:97",
+      "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/97",
+      "run_id": "39014044785",
+      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/39014044785",
       "executor": "phi-readonly-github-observer-v1",
       "model_execution": false,
-      "started_at": "2026-10-17T06:44:35.839Z",
+      "started_at": "2026-10-17T07:33:11.967Z",
       "status": "read_only_checked",
       "source_verification": "source_verified",
       "records": [
@@ -54,19 +54,19 @@
         "expected_sha": "56f4153339cee2003cc69081569f50d591469448",
         "observed_sha": "56f4153339cee2003cc69081569f50d591469448",
         "matched": true,
-        "checked_at": "2026-10-17T06:44:37.107Z"
+        "checked_at": "2026-10-17T07:33:13.437Z"
       },
       "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
-      "finished_at": "2026-10-17T06:44:37.107Z"
+      "finished_at": "2026-10-17T07:33:13.437Z"
     },
     {
-      "job_key": "moltnook:issue:91",
-      "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/91",
-      "run_id": "39011020138",
-      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/39011020138",
+      "job_key": "moltnook:issue:95",
+      "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/95",
+      "run_id": "39014044785",
+      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/39014044785",
       "executor": "phi-readonly-github-observer-v1",
       "model_execution": false,
-      "started_at": "2026-10-17T06:44:37.107Z",
+      "started_at": "2026-10-17T07:33:13.437Z",
       "status": "read_only_checked",
       "source_verification": "source_verified",
       "records": [
@@ -108,10 +108,10 @@
         "expected_sha": "56f4153339cee2003cc69081569f50d591469448",
         "observed_sha": "56f4153339cee2003cc69081569f50d591469448",
         "matched": true,
-        "checked_at": "2026-10-17T06:44:38.166Z"
+        "checked_at": "2026-10-17T07:33:14.737Z"
       },
       "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
-      "finished_at": "2026-10-17T06:44:38.166Z"
+      "finished_at": "2026-10-17T07:33:14.737Z"
     }
   ]
 }
