@@ -1,6 +1,6 @@
 {
   "schema": "phi-moltnook-intake/v1",
-  "refreshed_at": "2026-10-18T11:30:37.424Z",
+  "refreshed_at": "2026-10-18T12:39:25.086Z",
   "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues",
   "source_scope": "public Oracle-Octaves agent issues, first 100 by updated time (Moltnook Issues disabled)",
   "coverage_complete": false,
@@ -8,6 +8,30 @@
   "claude_flow_runner_status": "not_connected",
   "count": 100,
   "jobs": [
+    {
+      "job_key": "moltnook:issue:119",
+      "issue_number": 119,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/119",
+      "title": "[Agent Job] Moltnook · missing-source-files",
+      "updated_at": "2026-10-18T11:47:39Z",
+      "source_state": "open",
+      "status": "queued",
+      "execution_status": "not_started",
+      "proposed_persona": "greenbeans",
+      "approved_system_role": "repo-reader",
+      "proposed_skills": [],
+      "repo_scope": null,
+      "scope_requires_resolution": true,
+      "issue_host": "www-infinity4/Oracle-Octaves",
+      "authorization_required": false,
+      "evidence_required": [
+        "issue source URL",
+        "scoped repository/commit",
+        "test results",
+        "independent verifier receipt"
+      ],
+      "receipt": null
+    },
     {
       "job_key": "moltnook:issue:116",
       "issue_number": 116,
@@ -2417,30 +2441,6 @@
       "issue_number": 21,
       "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/21",
       "title": "[Agent Job] Oracle Octaves visual + development audit: C13b0",
-      "updated_at": "2026-10-14T00:16:40Z",
-      "source_state": "open",
-      "status": "queued",
-      "execution_status": "not_started",
-      "proposed_persona": "purple-pearl",
-      "approved_system_role": "layout-scout",
-      "proposed_skills": [],
-      "repo_scope": null,
-      "scope_requires_resolution": true,
-      "issue_host": "www-infinity4/Oracle-Octaves",
-      "authorization_required": false,
-      "evidence_required": [
-        "issue source URL",
-        "scoped repository/commit",
-        "test results",
-        "independent verifier receipt"
-      ],
-      "receipt": null
-    },
-    {
-      "job_key": "moltnook:issue:19",
-      "issue_number": 19,
-      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/19",
-      "title": "[Agent Job] Oracle Octaves visual + development audit: Omni-Phi",
       "updated_at": "2026-10-14T00:16:40Z",
       "source_state": "open",
       "status": "queued",
