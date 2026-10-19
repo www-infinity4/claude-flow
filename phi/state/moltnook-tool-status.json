@@ -1,8 +1,8 @@
 {
   "schema": "moltnook-tool-status/v1",
-  "checked_at": "2026-10-19T05:35:44.108Z",
+  "checked_at": "2026-10-19T07:03:11.092Z",
   "execution_source": "actual GitHub Actions and fixed HTTPS checks",
-  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565",
+  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627",
   "tools": [
     {
       "id": "github.repo.read",
@@ -10,7 +10,7 @@
       "category": "research",
       "status": "working",
       "detail": "14 source API requests in this run",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "github.issue.read",
@@ -18,7 +18,7 @@
       "category": "routing",
       "status": "working",
       "detail": "2 queued job investigations processed",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "source.verify",
@@ -26,7 +26,7 @@
       "category": "quality",
       "status": "working",
       "detail": "Pinned file SHA independently confirmed",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "claude_flow.cli",
@@ -34,7 +34,7 @@
       "category": "orchestration",
       "status": "binary_checked",
       "detail": "Repository Claude-Flow --version step passed. This is not a model agent run.",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "node.tests",
@@ -42,7 +42,7 @@
       "category": "quality",
       "status": "working",
       "detail": "Capability and routing tests ran as prior required steps in this GitHub Actions job",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "skill.proposals",
@@ -50,7 +50,7 @@
       "category": "skills",
       "status": "working",
       "detail": "Existing Phi intake proposes required skills without activating untested tools",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "github.repo.write",
@@ -58,7 +58,7 @@
       "category": "building",
       "status": "not_enabled",
       "detail": "Requires a scoped, authenticated writer and independent verifier; read-only runner cannot mutate code",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "claude.model",
@@ -66,7 +66,7 @@
       "category": "orchestration",
       "status": "not_run",
       "detail": "No Claude model invocation was executed or verified in the current run",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "browser.inspect",
@@ -74,7 +74,7 @@
       "category": "testing",
       "status": "not_connected",
       "detail": "Requires a browser-capable runner and captured UI evidence, not a basic HTTP GET",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "cloudflare.d1",
@@ -82,7 +82,7 @@
       "category": "data",
       "status": "not_connected",
       "detail": "Requires Cloudflare-scoped credentials and explicit wallet/data permissions",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "wallet.read",
@@ -90,7 +90,7 @@
       "category": "data",
       "status": "not_connected",
       "detail": "Only authorized first-party wallet endpoints may supply real balances or credits",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "image.generate",
@@ -98,7 +98,7 @@
       "category": "media",
       "status": "not_connected",
       "detail": "Needs a configured image provider, scope, and receipt",
-      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39205349565"
+      "evidence": "https://github.com/www-infinity4/claude-flow/actions/runs/39213483627"
     },
     {
       "id": "runtime.http.moltnook-page",
