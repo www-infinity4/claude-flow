@@ -1,6 +1,6 @@
 {
   "schema": "phi-moltnook-intake/v1",
-  "refreshed_at": "2026-10-21T12:45:26.616Z",
+  "refreshed_at": "2026-10-21T13:34:10.503Z",
   "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues",
   "source_scope": "public Oracle-Octaves agent issues, first 100 by updated time (Moltnook Issues disabled)",
   "coverage_complete": false,
@@ -8,6 +8,146 @@
   "claude_flow_runner_status": "not_connected",
   "count": 100,
   "jobs": [
+    {
+      "job_key": "moltnook:issue:184",
+      "issue_number": 184,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/184",
+      "title": "[Agent Job] Oracle Octaves visual + development audit: Open-Flaw",
+      "updated_at": "2026-10-21T12:45:46Z",
+      "source_state": "open",
+      "status": "queued",
+      "execution_status": "not_started",
+      "proposed_persona": "purple-pearl",
+      "approved_system_role": "layout-scout",
+      "proposed_skills": [],
+      "repo_scope": null,
+      "scope_requires_resolution": true,
+      "issue_host": "www-infinity4/Oracle-Octaves",
+      "authorization_required": false,
+      "evidence_required": [
+        "issue source URL",
+        "scoped repository/commit",
+        "test results",
+        "independent verifier receipt"
+      ],
+      "receipt": null
+    },
+    {
+      "job_key": "moltnook:issue:183",
+      "issue_number": 183,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/183",
+      "title": "[Agent Job] Oracle Octaves visual + development audit: Omniscape",
+      "updated_at": "2026-10-21T12:45:45Z",
+      "source_state": "open",
+      "status": "queued",
+      "execution_status": "not_started",
+      "proposed_persona": "purple-pearl",
+      "approved_system_role": "layout-scout",
+      "proposed_skills": [],
+      "repo_scope": null,
+      "scope_requires_resolution": true,
+      "issue_host": "www-infinity4/Oracle-Octaves",
+      "authorization_required": false,
+      "evidence_required": [
+        "issue source URL",
+        "scoped repository/commit",
+        "test results",
+        "independent verifier receipt"
+      ],
+      "receipt": null
+    },
+    {
+      "job_key": "moltnook:issue:182",
+      "issue_number": 182,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/182",
+      "title": "[Agent Job] Oracle Octaves visual + development audit: Omni-TV",
+      "updated_at": "2026-10-21T12:45:44Z",
+      "source_state": "open",
+      "status": "queued",
+      "execution_status": "not_started",
+      "proposed_persona": "purple-pearl",
+      "approved_system_role": "layout-scout",
+      "proposed_skills": [],
+      "repo_scope": null,
+      "scope_requires_resolution": true,
+      "issue_host": "www-infinity4/Oracle-Octaves",
+      "authorization_required": false,
+      "evidence_required": [
+        "issue source URL",
+        "scoped repository/commit",
+        "test results",
+        "independent verifier receipt"
+      ],
+      "receipt": null
+    },
+    {
+      "job_key": "moltnook:issue:181",
+      "issue_number": 181,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/181",
+      "title": "[Agent Job] Oracle Octaves visual + development audit: Omar-Token",
+      "updated_at": "2026-10-21T12:45:42Z",
+      "source_state": "open",
+      "status": "queued",
+      "execution_status": "not_started",
+      "proposed_persona": "blueberry",
+      "approved_system_role": "data-sensor",
+      "proposed_skills": [
+        {
+          "name": "wallet-receipt-auditor",
+          "criteria": [
+            "authenticated wallet authority",
+            "idempotency proof",
+            "no browser-side credit fiction"
+          ],
+          "status": "proposed-not-installed"
+        }
+      ],
+      "repo_scope": null,
+      "scope_requires_resolution": true,
+      "issue_host": "www-infinity4/Oracle-Octaves",
+      "authorization_required": true,
+      "evidence_required": [
+        "issue source URL",
+        "scoped repository/commit",
+        "test results",
+        "independent verifier receipt"
+      ],
+      "receipt": null
+    },
+    {
+      "job_key": "moltnook:issue:180",
+      "issue_number": 180,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/180",
+      "title": "[Agent Job] Oracle Octaves visual + development audit: og-image",
+      "updated_at": "2026-10-21T12:45:42Z",
+      "source_state": "open",
+      "status": "queued",
+      "execution_status": "not_started",
+      "proposed_persona": "purple-pearl",
+      "approved_system_role": "layout-scout",
+      "proposed_skills": [
+        {
+          "name": "image-text-proofreader",
+          "criteria": [
+            "text extraction test",
+            "proofreading evidence",
+            "manual review"
+          ],
+          "status": "proposed-not-installed"
+        }
+      ],
+      "repo_scope": null,
+      "scope_requires_resolution": true,
+      "issue_host": "www-infinity4/Oracle-Octaves",
+      "authorization_required": false,
+      "evidence_required": [
+        "issue source URL",
+        "scoped repository/commit",
+        "test results",
+        "independent verifier receipt"
+      ],
+      "receipt": null
+    },
     {
       "job_key": "moltnook:issue:179",
       "issue_number": 179,
@@ -2310,126 +2450,6 @@
       "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/84",
       "title": "[Agent Job] Oracle Octaves visual + development audit: deepeval",
       "updated_at": "2026-10-16T18:37:59Z",
-      "source_state": "open",
-      "status": "queued",
-      "execution_status": "not_started",
-      "proposed_persona": "purple-pearl",
-      "approved_system_role": "layout-scout",
-      "proposed_skills": [],
-      "repo_scope": null,
-      "scope_requires_resolution": true,
-      "issue_host": "www-infinity4/Oracle-Octaves",
-      "authorization_required": false,
-      "evidence_required": [
-        "issue source URL",
-        "scoped repository/commit",
-        "test results",
-        "independent verifier receipt"
-      ],
-      "receipt": null
-    },
-    {
-      "job_key": "moltnook:issue:85",
-      "issue_number": 85,
-      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/85",
-      "title": "[Agent Job] Oracle Octaves visual + development audit: DesiPhi",
-      "updated_at": "2026-10-16T18:37:57Z",
-      "source_state": "open",
-      "status": "queued",
-      "execution_status": "not_started",
-      "proposed_persona": "purple-pearl",
-      "approved_system_role": "layout-scout",
-      "proposed_skills": [],
-      "repo_scope": null,
-      "scope_requires_resolution": true,
-      "issue_host": "www-infinity4/Oracle-Octaves",
-      "authorization_required": false,
-      "evidence_required": [
-        "issue source URL",
-        "scoped repository/commit",
-        "test results",
-        "independent verifier receipt"
-      ],
-      "receipt": null
-    },
-    {
-      "job_key": "moltnook:issue:83",
-      "issue_number": 83,
-      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/83",
-      "title": "[Agent Job] Oracle Octaves visual + development audit: crewAI",
-      "updated_at": "2026-10-16T12:44:42Z",
-      "source_state": "open",
-      "status": "queued",
-      "execution_status": "not_started",
-      "proposed_persona": "purple-pearl",
-      "approved_system_role": "layout-scout",
-      "proposed_skills": [],
-      "repo_scope": null,
-      "scope_requires_resolution": true,
-      "issue_host": "www-infinity4/Oracle-Octaves",
-      "authorization_required": false,
-      "evidence_required": [
-        "issue source URL",
-        "scoped repository/commit",
-        "test results",
-        "independent verifier receipt"
-      ],
-      "receipt": null
-    },
-    {
-      "job_key": "moltnook:issue:82",
-      "issue_number": 82,
-      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/82",
-      "title": "[Agent Job] Oracle Octaves visual + development audit: crawl4ai",
-      "updated_at": "2026-10-16T12:44:42Z",
-      "source_state": "open",
-      "status": "queued",
-      "execution_status": "not_started",
-      "proposed_persona": "purple-pearl",
-      "approved_system_role": "layout-scout",
-      "proposed_skills": [],
-      "repo_scope": null,
-      "scope_requires_resolution": true,
-      "issue_host": "www-infinity4/Oracle-Octaves",
-      "authorization_required": false,
-      "evidence_required": [
-        "issue source URL",
-        "scoped repository/commit",
-        "test results",
-        "independent verifier receipt"
-      ],
-      "receipt": null
-    },
-    {
-      "job_key": "moltnook:issue:80",
-      "issue_number": 80,
-      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/80",
-      "title": "[Agent Job] Oracle Octaves visual + development audit: Control-Phi",
-      "updated_at": "2026-10-16T12:44:40Z",
-      "source_state": "open",
-      "status": "queued",
-      "execution_status": "not_started",
-      "proposed_persona": "purple-pearl",
-      "approved_system_role": "layout-scout",
-      "proposed_skills": [],
-      "repo_scope": null,
-      "scope_requires_resolution": true,
-      "issue_host": "www-infinity4/Oracle-Octaves",
-      "authorization_required": false,
-      "evidence_required": [
-        "issue source URL",
-        "scoped repository/commit",
-        "test results",
-        "independent verifier receipt"
-      ],
-      "receipt": null
-    },
-    {
-      "job_key": "moltnook:issue:79",
-      "issue_number": 79,
-      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/79",
-      "title": "[Agent Job] Oracle Octaves visual + development audit: compromise",
-      "updated_at": "2026-10-16T12:44:40Z",
       "source_state": "open",
       "status": "queued",
       "execution_status": "not_started",
