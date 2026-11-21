@@ -1,6 +1,6 @@
 {
   "schema": "phi-moltnook-intake/v1",
-  "refreshed_at": "2026-11-21T17:28:37.576Z",
+  "refreshed_at": "2026-11-21T18:28:46.866Z",
   "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues",
   "source_scope": "public Oracle-Octaves agent issues, first 100 by updated time (Moltnook Issues disabled)",
   "coverage_complete": false,
@@ -13,7 +13,7 @@
       "issue_number": 30,
       "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/30",
       "title": "[Agent Job] Moltnook · failed-workflow",
-      "updated_at": "2026-11-21T17:11:31Z",
+      "updated_at": "2026-11-21T18:14:04Z",
       "source_state": "open",
       "status": "queued",
       "execution_status": "not_started",
