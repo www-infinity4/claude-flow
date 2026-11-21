@@ -1,48 +1,102 @@
 {
   "schema": "phi-moltnook-observer-runs/v1",
-  "generated_at": "2026-11-21T21:28:33.457Z",
-  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/44951699007",
+  "generated_at": "2026-11-21T22:28:27.371Z",
+  "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/44956901079",
   "source": "GitHub API verified GET requests",
   "github_requests": 16,
   "jobs": [
     {
-      "job_key": "moltnook:issue:62",
-      "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/62",
-      "run_id": "44951699007",
-      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/44951699007",
+      "job_key": "moltnook:issue:30",
+      "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/30",
+      "run_id": "44956901079",
+      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/44956901079",
       "executor": "phi-readonly-github-observer-v1",
       "model_execution": false,
-      "started_at": "2026-11-21T21:28:30.721Z",
+      "started_at": "2026-11-21T22:28:24.343Z",
       "status": "read_only_checked",
       "source_verification": "source_verified",
       "records": [
         {
           "repo": "www-infinity4/Moltnook",
-          "revision": "cdc07ed6ee9ea88c6f2635201af240e3acaea516",
+          "revision": "c8739758d337a615e769ea926a344408f9c5ba16",
           "observations": [
             {
               "path": "README.md",
               "sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
               "ok": true,
-              "url": "https://github.com/www-infinity4/Moltnook/blob/cdc07ed6ee9ea88c6f2635201af240e3acaea516/README.md"
+              "url": "https://github.com/www-infinity4/Moltnook/blob/c8739758d337a615e769ea926a344408f9c5ba16/README.md"
             },
             {
               "path": "AGENTS.md",
               "sha": "1e692e76ac24698c48c13001818b884d9c2f7c80",
               "ok": true,
-              "url": "https://github.com/www-infinity4/Moltnook/blob/cdc07ed6ee9ea88c6f2635201af240e3acaea516/AGENTS.md"
+              "url": "https://github.com/www-infinity4/Moltnook/blob/c8739758d337a615e769ea926a344408f9c5ba16/AGENTS.md"
             },
             {
               "path": "agent-room.js",
               "sha": "e774529c0d020cb7202ac20d3d93c8c036796761",
               "ok": true,
-              "url": "https://github.com/www-infinity4/Moltnook/blob/cdc07ed6ee9ea88c6f2635201af240e3acaea516/agent-room.js"
+              "url": "https://github.com/www-infinity4/Moltnook/blob/c8739758d337a615e769ea926a344408f9c5ba16/agent-room.js"
             },
             {
               "path": "agents/roster.json",
               "sha": "76f89b80a60ebcf62f998c8b014d9af6264fc844",
               "ok": true,
-              "url": "https://github.com/www-infinity4/Moltnook/blob/cdc07ed6ee9ea88c6f2635201af240e3acaea516/agents/roster.json"
+              "url": "https://github.com/www-infinity4/Moltnook/blob/c8739758d337a615e769ea926a344408f9c5ba16/agents/roster.json"
+            }
+          ]
+        }
+      ],
+      "verifier": {
+        "role": "independent-verifier",
+        "persona": "pink-panther",
+        "rechecked": "www-infinity4/Moltnook/README.md",
+        "expected_sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
+        "observed_sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
+        "matched": true,
+        "checked_at": "2026-11-21T22:28:25.966Z"
+      },
+      "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
+      "finished_at": "2026-11-21T22:28:25.966Z"
+    },
+    {
+      "job_key": "moltnook:issue:62",
+      "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/62",
+      "run_id": "44956901079",
+      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/44956901079",
+      "executor": "phi-readonly-github-observer-v1",
+      "model_execution": false,
+      "started_at": "2026-11-21T22:28:25.966Z",
+      "status": "read_only_checked",
+      "source_verification": "source_verified",
+      "records": [
+        {
+          "repo": "www-infinity4/Moltnook",
+          "revision": "c8739758d337a615e769ea926a344408f9c5ba16",
+          "observations": [
+            {
+              "path": "README.md",
+              "sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
+              "ok": true,
+              "url": "https://github.com/www-infinity4/Moltnook/blob/c8739758d337a615e769ea926a344408f9c5ba16/README.md"
+            },
+            {
+              "path": "AGENTS.md",
+              "sha": "1e692e76ac24698c48c13001818b884d9c2f7c80",
+              "ok": true,
+              "url": "https://github.com/www-infinity4/Moltnook/blob/c8739758d337a615e769ea926a344408f9c5ba16/AGENTS.md"
+            },
+            {
+              "path": "agent-room.js",
+              "sha": "e774529c0d020cb7202ac20d3d93c8c036796761",
+              "ok": true,
+              "url": "https://github.com/www-infinity4/Moltnook/blob/c8739758d337a615e769ea926a344408f9c5ba16/agent-room.js"
+            },
+            {
+              "path": "agents/roster.json",
+              "sha": "76f89b80a60ebcf62f998c8b014d9af6264fc844",
+              "ok": true,
+              "url": "https://github.com/www-infinity4/Moltnook/blob/c8739758d337a615e769ea926a344408f9c5ba16/agents/roster.json"
             }
           ]
         },
@@ -66,64 +120,10 @@
         "expected_sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
         "observed_sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
         "matched": true,
-        "checked_at": "2026-11-21T21:28:32.443Z"
+        "checked_at": "2026-11-21T22:28:27.371Z"
       },
       "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
-      "finished_at": "2026-11-21T21:28:32.443Z"
-    },
-    {
-      "job_key": "moltnook:issue:30",
-      "issue_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/30",
-      "run_id": "44951699007",
-      "run_url": "https://github.com/www-infinity4/claude-flow/actions/runs/44951699007",
-      "executor": "phi-readonly-github-observer-v1",
-      "model_execution": false,
-      "started_at": "2026-11-21T21:28:32.443Z",
-      "status": "read_only_checked",
-      "source_verification": "source_verified",
-      "records": [
-        {
-          "repo": "www-infinity4/Moltnook",
-          "revision": "cdc07ed6ee9ea88c6f2635201af240e3acaea516",
-          "observations": [
-            {
-              "path": "README.md",
-              "sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
-              "ok": true,
-              "url": "https://github.com/www-infinity4/Moltnook/blob/cdc07ed6ee9ea88c6f2635201af240e3acaea516/README.md"
-            },
-            {
-              "path": "AGENTS.md",
-              "sha": "1e692e76ac24698c48c13001818b884d9c2f7c80",
-              "ok": true,
-              "url": "https://github.com/www-infinity4/Moltnook/blob/cdc07ed6ee9ea88c6f2635201af240e3acaea516/AGENTS.md"
-            },
-            {
-              "path": "agent-room.js",
-              "sha": "e774529c0d020cb7202ac20d3d93c8c036796761",
-              "ok": true,
-              "url": "https://github.com/www-infinity4/Moltnook/blob/cdc07ed6ee9ea88c6f2635201af240e3acaea516/agent-room.js"
-            },
-            {
-              "path": "agents/roster.json",
-              "sha": "76f89b80a60ebcf62f998c8b014d9af6264fc844",
-              "ok": true,
-              "url": "https://github.com/www-infinity4/Moltnook/blob/cdc07ed6ee9ea88c6f2635201af240e3acaea516/agents/roster.json"
-            }
-          ]
-        }
-      ],
-      "verifier": {
-        "role": "independent-verifier",
-        "persona": "pink-panther",
-        "rechecked": "www-infinity4/Moltnook/README.md",
-        "expected_sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
-        "observed_sha": "08d8d91aec9e4232a383ce24939471ec699cf383",
-        "matched": true,
-        "checked_at": "2026-11-21T21:28:33.457Z"
-      },
-      "next_action": "A scoped model/task executor can implement changes only after repo ownership and authorization are resolved.",
-      "finished_at": "2026-11-21T21:28:33.457Z"
+      "finished_at": "2026-11-21T22:28:27.371Z"
     }
   ]
 }
