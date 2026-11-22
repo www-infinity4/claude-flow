@@ -1,6 +1,6 @@
 {
   "schema": "phi-moltnook-intake/v1",
-  "refreshed_at": "2026-11-22T06:34:32.144Z",
+  "refreshed_at": "2026-11-22T07:28:24.701Z",
   "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues",
   "source_scope": "public Oracle-Octaves agent issues, first 100 by updated time (Moltnook Issues disabled)",
   "coverage_complete": false,
@@ -9,11 +9,11 @@
   "count": 98,
   "jobs": [
     {
-      "job_key": "moltnook:issue:62",
-      "issue_number": 62,
-      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/62",
-      "title": "[Agent Job] QuantaPhi · failed-workflow",
-      "updated_at": "2026-11-22T05:45:27Z",
+      "job_key": "moltnook:issue:30",
+      "issue_number": 30,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/30",
+      "title": "[Agent Job] Moltnook · failed-workflow",
+      "updated_at": "2026-11-22T06:43:34Z",
       "source_state": "open",
       "status": "queued",
       "execution_status": "not_started",
@@ -33,11 +33,11 @@
       "receipt": null
     },
     {
-      "job_key": "moltnook:issue:30",
-      "issue_number": 30,
-      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/30",
-      "title": "[Agent Job] Moltnook · failed-workflow",
-      "updated_at": "2026-11-22T05:28:05Z",
+      "job_key": "moltnook:issue:62",
+      "issue_number": 62,
+      "source_url": "https://github.com/www-infinity4/Oracle-Octaves/issues/62",
+      "title": "[Agent Job] QuantaPhi · failed-workflow",
+      "updated_at": "2026-11-22T05:45:27Z",
       "source_state": "open",
       "status": "queued",
       "execution_status": "not_started",
